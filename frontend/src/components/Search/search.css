@@ -1,0 +1,19 @@
+.search-form {
+    display: flex; 
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#location-input, #job-input {
+    width: 40%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search-pin-top {
+
+}
+
+/* #search-form-button {
+    height: 57px;
+} */
