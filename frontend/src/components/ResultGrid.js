@@ -13,6 +13,8 @@ import { useStateValue } from '../state';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    height: '100%',
+    flex: 1
   },
   paper: {
     marginTop: theme.spacing(3),

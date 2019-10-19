@@ -18,8 +18,7 @@ export default function Contribute() {
 
   return (
     <div>
-      <Button color="primary" className={classes.button}
-      >
+      <Button color="primary" className={classes.button}>
         Contribute
       </Button>
     </div>
