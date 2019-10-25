@@ -16,10 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from todo import views
+from django_filters.views import FilterView
+
+from todo import views as todo_views
+from blueberry import views as blueberry_views
 
 router = routers.DefaultRouter()
-router.register(r'todos', views.TodoView, 'todo')
+router.register(r'todos', todo_views.TodoView, 'todo')
+router.register(r'sites', blueberry_views.SiteView, 'site')
+router.register(r'employers', blueberry_views.EmployerView, 'employer')
+router.register(r'wagepostings', blueberry_views.WagePostingView, 'wageposting')
+router.register(r'wagebuffers', blueberry_views.WageBufferView, 'wagebuffer')
+router.register(r'housingpostings', blueberry_views.HousingPostingView, 'housingposting')
+router.register(r'housingbuffers', blueberry_views.HousingBufferView, 'housingbuffer')
+router.register(r'housingprices', blueberry_views.HousingPriceList, 'housingprice')
+router.register(r'wages', blueberry_views.WagesList, 'wage')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
