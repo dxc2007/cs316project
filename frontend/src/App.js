@@ -6,7 +6,7 @@ import {
 import './App.css';
 import { StateProvider } from './state';
 import NavBar from './components/NavBar';
-import Login from './components/Login';
+import Login from './components/authentication/main.authentication';
 import SearchPage from './components/SearchPage'
 import ResultPage from './components/ResultPage'
 import Account from './components/Account'
