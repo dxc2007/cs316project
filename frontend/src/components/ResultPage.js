@@ -99,11 +99,11 @@ export default function ResultPage() {
                             </Typography> 
                             <Typography variant='body2'>
                             {(searchQuery) ? 
-                                'The average salary for a '
-                                + searchQuery.job +
-                                ' in ' 
-                                + searchQuery.location
-                                + ' is: '
+                                <React.Fragment><span>The average salart in </span>
+                                <b>{searchQuery.location}</b>
+                                <span> for a </span>
+                                <b>{searchQuery.job}</b>
+                                <span> is: </span></React.Fragment>
                                 : null}
                             </Typography> 
                             {(searchResult && wageResult) ? 
@@ -117,7 +117,7 @@ export default function ResultPage() {
                              max={2}
                              marks={marks}/>
                              <Typography>
-                             {renderWageValue()}
+                             {renderWageValue()} USD
                             </Typography></React.Fragment>
                                 : null}
                         </Paper>
@@ -129,9 +129,9 @@ export default function ResultPage() {
                             </Typography>
                             <Typography variant='body2'>
                             {(searchQuery) ? 
-                                'The average housing price in '
-                                + searchQuery.location
-                                + ' is: '
+                                <React.Fragment><span>The average housing price in  </span>
+                                <b>{searchQuery.location}</b>
+                                <span>  is: </span></React.Fragment>
                                 : null}
                             </Typography> 
                             {(searchResult && housingResult) ? 
@@ -145,7 +145,7 @@ export default function ResultPage() {
                              max={2}
                              marks={marks}/>
                              <Typography>
-                             {renderHousingValue()}
+                             {renderHousingValue()} USD
                             </Typography></React.Fragment>
                                 : null}
                             
