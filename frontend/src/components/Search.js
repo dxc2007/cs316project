@@ -30,26 +30,57 @@ const useStyles = makeStyles(theme => ({
   }));
 
 const parseWagePosting = async (posting) => {
-    const wagePosting = posting.wageposting[0];
-    // get company name 
-    let employerData = await axios.get("http://localhost:8000/api/employers/"+ wagePosting.employerid);
-
-    return {
-        company: employerData.data.employer_name, 
-        location: posting.city, 
-        position: wagePosting.position, 
-        year: wagePosting.year, 
-        wage: wagePosting.wage,
-    }
+    return await Promise.all(posting.wageposting.map(async entry => {
+        let employerData = await axios.get("http://localhost:8000/api/employers/"+ entry.employerid);
+        return {
+            company: employerData.data.employer_name, 
+            location: posting.city, 
+            position: entry.position, 
+            year: entry.year, 
+            wage: entry.wage,
+        }
+    }));
 }
 
 const fetchSearchResult = async (job, location) => {
-     // query backend 
      const url = "http://localhost:8000/api/wages/?city=" + location + "&position=" + job;
      let wageInfo = await axios.get(url);
-     return await Promise.all(wageInfo.data.map(item => 
-         parseWagePosting(item)));
+     return await 
+         wageInfo.data.map(item => 
+            parseWagePosting(item))
+        .reduce((acc, val) => acc.concat((val), []));
 }
+
+const fetchHousingResult = async (location) => {
+    const url = "http://localhost:8000/api/housingprices/?city=" + location;
+    let housingInfo = await axios.get(url);
+
+    if (housingInfo.data[0].housingposting.length > 0) {
+        const housingData = housingInfo.data[0].housingposting.map(posting => posting.price);
+        return {
+            ave: housingData.reduce((a,b) => a + b, 0) / housingData.length, 
+            min: Math.min(...housingData), 
+            max: Math.max(...housingData)
+        }
+    } else {
+        return null;
+    }
+}
+
+const calculateWageResult = (result) => {
+    if (result.length > 0) {
+        const wages = result.map(post => post.wage);
+        return {
+            ave: wages.reduce((a,b) => a + b, 0) / wages.length, 
+            min: Math.min(...wages), 
+            max: Math.max(...wages)
+        }
+    } else {
+        return null;
+    }
+}
+
+
 
 const Search = () => {
       
@@ -91,10 +122,21 @@ const Search = () => {
                             type: 'updateSearchQuery',
                             searchQuery: {location: values.location, job: values.job}
                         });
+                        const housingResult = await fetchHousingResult(values.location);
+                        dispatch({
+                            type: 'updateHousingResult',
+                            housingResult: housingResult, 
+                        })
+                        
                         const result = await fetchSearchResult(values.job, values.location);
                         dispatch({
                             type: 'updateSearchResult',
                             searchResult: result,
+                        });
+                        const wageResult = calculateWageResult(result);
+                        dispatch({
+                            type: 'updateWageResult',
+                            wageResult: wageResult,
                         });
                     }}
                     />

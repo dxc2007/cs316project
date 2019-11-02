@@ -31,9 +31,10 @@ export default function DenseTable() {
   const [{ searchResult }, dispatch] = useStateValue();
 
   const renderListingGrid = (searchResult) => {
+    console.log(searchResult);
     if (searchResult) {
         return searchResult.map(listing => (
-              <TableRow key={listing.company}>
+              <TableRow key={listing.company + listing.wage}>
                 <TableCell align="right">{listing.company}</TableCell>
                 <TableCell align="right">{listing.location}</TableCell>
                 <TableCell align="right">{listing.position}</TableCell>
