@@ -78,6 +78,16 @@ function App() {
           ...state, 
           wageResult: action.wageResult, 
         }
+      case 'getCompanies':
+        return {
+          ...state, 
+          companies: action.companies,
+        }
+      case 'getLocations':
+        return {
+          ...state, 
+          locations: action.locations,
+        }
       default:
           return state;
     }

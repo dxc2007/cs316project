@@ -45,6 +45,11 @@ const parseWagePosting = async (posting) => {
 const fetchSearchResult = async (job, location) => {
      const url = "http://localhost:8000/api/wages/?city=" + location + "&position=" + job;
      let wageInfo = await axios.get(url);
+
+     if (!wageInfo || !wageInfo.data || wageInfo.data.length === 0) {
+         return null;
+     }
+
      return await 
          wageInfo.data.map(item => 
             parseWagePosting(item))
@@ -55,10 +60,14 @@ const fetchHousingResult = async (location) => {
     const url = "http://localhost:8000/api/housingprices/?city=" + location;
     let housingInfo = await axios.get(url);
 
+    if (!housingInfo || !housingInfo.data || housingInfo.data.length === 0) {
+        return null;
+    }
+
     if (housingInfo.data[0].housingposting.length > 0) {
         const housingData = housingInfo.data[0].housingposting.map(posting => posting.price);
         return {
-            ave: housingData.reduce((a,b) => a + b, 0) / housingData.length, 
+            ave: parseInt(housingData.reduce((a,b) => a + b, 0) / housingData.length), 
             min: Math.min(...housingData), 
             max: Math.max(...housingData)
         }
@@ -68,10 +77,10 @@ const fetchHousingResult = async (location) => {
 }
 
 const calculateWageResult = (result) => {
-    if (result.length > 0) {
+    if (result && result.length > 0) {
         const wages = result.map(post => post.wage);
         return {
-            ave: wages.reduce((a,b) => a + b, 0) / wages.length, 
+            ave: parseInt(wages.reduce((a,b) => a + b, 0) / wages.length), 
             min: Math.min(...wages), 
             max: Math.max(...wages)
         }
