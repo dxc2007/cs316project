@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import { useStateValue } from '../state';
 
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -26,6 +27,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
+];
+
 export default function DenseTable() {
   const classes = useStyles();
   const [{ searchResult }, dispatch] = useStateValue();
@@ -38,7 +51,8 @@ export default function DenseTable() {
                 <TableCell align="right">{listing.location}</TableCell>
                 <TableCell align="right">{listing.position}</TableCell>
                 <TableCell align="right">{listing.year}</TableCell>
-                <TableCell align="right">{listing.wage}</TableCell>
+                <TableCell align="right">{listing.wage1}</TableCell>
+                <TableCell align="right">{listing.wage2}</TableCell>
               </TableRow>
             ))
     } else {
@@ -56,7 +70,8 @@ export default function DenseTable() {
               <TableCell align="right">Location</TableCell>
               <TableCell align="right">Position</TableCell>
               <TableCell align="right">Year</TableCell>
-              <TableCell align="right">Wage</TableCell>
+              <TableCell align="right">Wage (Raw)</TableCell>
+              <TableCell align="right">Wage (Inflation-Corrected)</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
