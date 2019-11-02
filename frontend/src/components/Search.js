@@ -8,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStateValue } from '../state'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -28,28 +27,6 @@ const useStyles = makeStyles(theme => ({
         color: 'black',
     }
   }));
-
-const parseWagePosting = async (posting) => {
-    const wagePosting = posting.wageposting[0];
-    // get company name 
-    let employerData = await axios.get("http://localhost:8000/api/employers/"+ wagePosting.employerid);
-
-    return {
-        company: employerData.data.employer_name, 
-        location: posting.city, 
-        position: wagePosting.position, 
-        year: wagePosting.year, 
-        wage: wagePosting.wage,
-    }
-}
-
-const fetchSearchResult = async (job, location) => {
-     // query backend 
-     const url = "http://localhost:8000/api/wages/?city=" + location + "&position=" + job;
-     let wageInfo = await axios.get(url);
-     return await Promise.all(wageInfo.data.map(item => 
-         parseWagePosting(item)));
-}
 
 const Search = () => {
       
@@ -86,17 +63,10 @@ const Search = () => {
             <IconButton className={classes.iconButton} aria-label="search">
                 <Link className={classes.search} to="/result">
                     <SearchIcon
-                    onClick={async () => {
-                        dispatch({
-                            type: 'updateSearchQuery',
-                            searchQuery: {location: values.location, job: values.job}
-                        });
-                        const result = await fetchSearchResult(values.job, values.location);
-                        dispatch({
-                            type: 'updateSearchResult',
-                            searchResult: result,
-                        });
-                    }}
+                    onClick={() => dispatch({
+                        type: 'handleSearch',
+                        searchQuery: {location: values.location, job: values.job}
+                    })}
                     />
                 </Link>
             </IconButton>

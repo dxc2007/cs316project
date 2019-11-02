@@ -11,7 +11,6 @@ import SearchPage from './components/SearchPage'
 import ResultPage from './components/ResultPage'
 import Account from './components/Account'
 import Contribute from './components/Contribute'
-import axios from 'axios'
 
 
 function App() {
@@ -29,7 +28,10 @@ function App() {
           ...state, 
           user: action.newUser
         }
-      case 'updateSearchQuery':
+      case 'handleSearch':
+        const job = action.job;
+        const location = action.location;
+        // query backend 
         const dummyResult = [
           {
             company: 'a',
@@ -60,11 +62,6 @@ function App() {
           ...state, 
           searchQuery: action.searchQuery,
           searchResult: dummyResult, 
-        }
-      case 'updateSearchResult':
-        return {
-          ...state, 
-          searchResult: action.searchResult,
         }
       default:
           return state;

@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import { useStateValue } from '../state';
-import WorkForm from './WorkForm';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -11,11 +10,6 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
-  item: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center', 
-  }
 }));
 
 export default function Contribute() {
@@ -23,10 +17,10 @@ export default function Contribute() {
   const [{ user }, dispatch] = useStateValue();
 
   return (
-      <Grid container className={classes.root}>
-        <Grid item xs={12} sm={8} md={5} className={classes.item} square>
-          <WorkForm></WorkForm>
-        </Grid>
-      </Grid>
+    <div>
+      <Button color="primary" className={classes.button}>
+        Contribute
+      </Button>
+    </div>
   );
 }
