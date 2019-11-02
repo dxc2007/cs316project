@@ -4,6 +4,8 @@ import { useStateValue } from '../state';
 import { Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Slider from '@material-ui/core/Slider';
+
 
 import ResultGrid from './ResultGrid'
 
@@ -23,13 +25,68 @@ const useStyles = makeStyles(theme => ({
   },
   item: {
     paddingBottom: theme.spacing(2)
+  },
+  slider: {
+      width: "80%",
   }
 
 }));
 
+const marks = [
+    {
+      value: 0,
+      label: 'Minimum',
+    },
+    {
+      value: 1,
+      label: 'Average',
+    },
+    {
+      value: 2,
+      label: 'Maximum',
+    },
+  ];
+  
+  function valuetext(value) {
+    return `${value}°C`;
+  }
+  
+  function valueLabelFormat(value) {
+    return marks.findIndex(mark => mark.value === value) + 1;
+  }
+
+
 export default function ResultPage() {
     const classes = useStyles();
-    const [{ searchResult, searchQuery }, dispatch] = useStateValue();
+    const [{ searchResult, searchQuery, housingResult, wageResult }, dispatch] = useStateValue();
+    console.log(wageResult);
+    const [toggle, setToggle] = React.useState({
+        wage: 1,
+        housing: 1,
+      });
+    const handleChange = name => (event, newVal) => {
+        setToggle({ ...toggle, [name]: newVal });
+    };
+
+    const renderHousingValue = () => {
+        if (toggle.housing == 0) {
+            return housingResult.min;
+        } else if (toggle.housing == 1) {
+            return housingResult.ave;
+        } else {
+            return housingResult.max;
+        }
+    }
+
+    const renderWageValue = () => {
+        if (toggle.wage == 0) {
+            return wageResult.min;
+        } else if (toggle.wage == 1) {
+            return wageResult.ave;
+        } else {
+            return wageResult.max;
+        }
+    }
 
     return (
         <div className={classes.root}>
@@ -49,6 +106,20 @@ export default function ResultPage() {
                                 + ' is: '
                                 : null}
                             </Typography> 
+                            {(searchResult && wageResult) ? 
+                             <React.Fragment><Slider
+                             className={classes.slider}
+                             defaultValue={1}
+                             getAriaValueText={valuetext}
+                             aria-labelledby="discrete-slider-always"
+                             min={0}
+                             onChange={handleChange('wage')}
+                             max={2}
+                             marks={marks}/>
+                             <Typography>
+                             {renderWageValue()}
+                            </Typography></React.Fragment>
+                                : null}
                         </Paper>
                     </Grid>
                     <Grid className={classes.item} item xs={12}>
@@ -63,6 +134,20 @@ export default function ResultPage() {
                                 + ' is: '
                                 : null}
                             </Typography> 
+                            {(searchResult && housingResult) ? 
+                             <React.Fragment><Slider
+                             className={classes.slider}
+                             defaultValue={1}
+                             getAriaValueText={valuetext}
+                             aria-labelledby="discrete-slider-always"
+                             min={0}
+                             onChange={handleChange('housing')}
+                             max={2}
+                             marks={marks}/>
+                             <Typography>
+                             {renderHousingValue()}
+                            </Typography></React.Fragment>
+                                : null}
                             
                         </Paper>
                     </Grid>

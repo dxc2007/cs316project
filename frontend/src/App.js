@@ -20,6 +20,8 @@ function App() {
     user: null, 
     searchQuery: null, 
     searchResult: null,
+    housingResult: null, 
+    wageResult: null, 
   };
 
   const reducer = (state, action) => {
@@ -65,6 +67,16 @@ function App() {
         return {
           ...state, 
           searchResult: action.searchResult,
+        }
+      case 'updateHousingResult':
+        return {
+          ...state, 
+          housingResult: action.housingResult, 
+        }
+      case 'updateWageResult':
+        return {
+          ...state, 
+          wageResult: action.wageResult, 
         }
       default:
           return state;
