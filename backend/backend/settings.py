@@ -35,19 +35,33 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.github',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
     'django_filters',
     'todo',
     'blueberry'
 ]
 
+SITE_ID = 1
+
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
-    )
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
 }
 
 MIDDLEWARE = [
@@ -111,6 +125,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = DEFAULT_FROM_EMAIL = 'blueberryproject316@gmail.com'
+# EMAIL_HOST_PASSWORD = 'P@ssword590'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
