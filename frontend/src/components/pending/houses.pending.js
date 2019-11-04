@@ -172,7 +172,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Pending Roles
+          Pending Housing
         </Typography>
       )}
 
@@ -234,7 +234,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-  export default function RolesTable() {
+  export default function HousesTable() {
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('company');

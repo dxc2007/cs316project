@@ -9,15 +9,19 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ControlPointOutlinedIcon from '@material-ui/icons/ControlPointOutlined';
 import Divider from '@material-ui/core/Divider';
+import {lighten} from '@material-ui/core/styles';
+import { Link, useLocation } from 'react-router-dom';
 
-const useStyles = makeStyles({
+import Pending from '../pending/main.pending';
+
+const useStyles = makeStyles(theme => ({
     box: {
         maxWidth: 900
     },
     card: {
         borderRadius: "0px",
         margin: 10,
-        backgroundColor: "#E8F8F9",
+        backgroundColor: lighten(theme.palette.primary.main, 0.95),
     },
     sides: {
         display: "flex",
@@ -35,7 +39,11 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
-  });
+    link: {
+        textDecoration: 'none',
+        color: 'black',
+    }
+  }));
 
 export default function Options() {
     const classes = useStyles();
@@ -104,7 +112,11 @@ export default function Options() {
                         </CardContent>
                         <Divider />
                         <CardActions>
-                            <Button size="small">View pending entries</Button>
+                            <Button size="small">
+                                <Link className={classes.link} to="/pending">
+                                    View pending entries
+                                </Link>
+                            </Button>
                         </CardActions>
                     </Card>
                 </Grid>

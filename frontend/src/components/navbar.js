@@ -5,6 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
+import './components.css';
+
 import Search from './Search'
 
 import { useStateValue } from '../state'
@@ -17,6 +19,12 @@ const useStyles = makeStyles(theme => ({
     title: {
       flexGrow: 1,
       fontSize: '40px',
+    },
+    main: {
+        textDecoration: 'none',
+        fontFamily: "Lobster", 
+        color: 'black',
+        fontSize: "50px",
     },
     link: {
         textDecoration: 'none',
@@ -65,7 +73,7 @@ const NavBar = () => {
         <AppBar position="static">
             <Toolbar>
                 <Typography className={classes.title} variant="title" color="inherit">
-                <Link className={classes.link} to="/search">
+                <Link className={classes.main} to="/search">
                         Blueberry
                     </Link>
                 </Typography>
