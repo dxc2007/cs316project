@@ -11,6 +11,7 @@ import SearchPage from './components/SearchPage'
 import ResultPage from './components/ResultPage'
 import Account from './components/Account'
 import Contribute from './components/Contribute'
+import Profile from './components/profile/main.profile';
 import axios from 'axios'
 
 
@@ -105,6 +106,7 @@ function App() {
         <Route path="/search" component={SearchPage}/>
         <Route path='/contribute' component={Contribute}/>
         <Route path='/account' component={Account}/>
+        <Route path='/profile' component={Profile}/>
       </Switch>
     </StateProvider>
   );
