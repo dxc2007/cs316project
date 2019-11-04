@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ControlPointOutlinedIcon from '@material-ui/icons/ControlPointOutlined';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
     box: {
@@ -57,6 +58,7 @@ export default function Options() {
                             <ControlPointOutlinedIcon className={classes.circle} style={{ fontSize: 80 }} />
                         </Container>
                         </CardContent>
+                        <Divider />
                         <CardActions>
                             <Button size="small">Contribute Work Experience</Button>
                         </CardActions>
@@ -78,6 +80,7 @@ export default function Options() {
                             <ControlPointOutlinedIcon className={classes.circle} style={{ fontSize: 80 }} />
                         </Container>
                         </CardContent>
+                        <Divider />
                         <CardActions>
                             <Button size="small">Contribute Housing Experience</Button>
                         </CardActions>
@@ -99,6 +102,7 @@ export default function Options() {
                             <ControlPointOutlinedIcon className={classes.circle} style={{ fontSize: 80 }} />
                         </Container>
                         </CardContent>
+                        <Divider />
                         <CardActions>
                             <Button size="small">View pending entries</Button>
                         </CardActions>
