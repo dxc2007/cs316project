@@ -12,6 +12,7 @@ import ResultPage from './components/ResultPage'
 import Account from './components/Account'
 import Contribute from './components/Contribute'
 import Profile from './components/profile/main.profile';
+import Pending from './components/pending/main.pending';
 import axios from 'axios'
 
 
@@ -107,6 +108,7 @@ function App() {
         <Route path='/contribute' component={Contribute}/>
         <Route path='/account' component={Account}/>
         <Route path='/profile' component={Profile}/>
+        <Route path='/pending' component={Pending}/>
       </Switch>
     </StateProvider>
   );
