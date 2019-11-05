@@ -39,7 +39,7 @@ const NavBar = () => {
                     </Link>
                 </Button>
                 <Button>
-                    <Link className={classes.link} to="/contribute">
+                    <Link className={classes.link} to="/contribute/work">
                         Contribute
                     </Link>
                 </Button>
