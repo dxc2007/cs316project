@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
   },
   header: {
-      marginTop: theme.spacing(5),
-      textAlign: "center",
-      flex: "0 0 100%",
+    marginTop: theme.spacing(5),
+    textAlign: "center",
+    flex: "0 0 100%",
   },
   subtitle: {
     marginBottom: theme.spacing(5),
@@ -61,20 +61,16 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function WorkForm() {
+export default function HousingForm() {
   const classes = useStyles();
-  const [{ user , companies, locations }, dispatch] = useStateValue();
+  const [{ user , locations }, dispatch] = useStateValue();
   const [values, setValues] = React.useState({
-    company: '',
-    newCompany: '',
-    newIndustry: '',
     newCity: '',
     newState: '',
     newZip: '',
     location: '',
-    position: '',
+    price: '',
     year: '',
-    salary: '',
   });
   const [didPost, setDidPost] = React.useState('');
 
@@ -83,20 +79,8 @@ export default function WorkForm() {
       console.log(values);
   };
 
-  const renderAddNewCompany = () => {
-    return <MenuItem key="add-new-company" value="add-new-company">Add New Company...</MenuItem>
-  }
-
   const renderAddNewLocation = () => {
     return <MenuItem key="add-new-location" value="add-new-location">Add New Location...</MenuItem>
-  }
-
-  const renderCompanyOptions = () => {
-    if (companies) {
-      return companies.map(company => {
-        return <MenuItem key={company.employerid} value={company.employerid}>{company.employer_name}</MenuItem>
-      })
-    }
   }
 
   const renderLocationOptions = () => {
@@ -105,15 +89,6 @@ export default function WorkForm() {
         return <MenuItem key={location.siteid} value={location.siteid}>{location.city}, {location.state}</MenuItem>
       })
     }
-  }
-
-  const postNewCompany = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/employers/", {
-      "employer_name": values.newCompany,
-      "industry": values.newIndustry,
-    })
-    setDidPost();
-    setValues({ ...values, company: res.data.employerid });
   }
 
   const postNewLocation = () => async () => {
@@ -126,47 +101,25 @@ export default function WorkForm() {
     setValues({...values, location: res.data.siteid});
   }
 
-  const postWorkForm = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/wagebuffers/", {
+  const postHousingForm = () => async () => {
+    const res = await axios.post("http://localhost:8000/api/housingbuffers/", {
       "siteid": values.location,
-      "employerid": values.company,
-      "uid": 1,
-      "position": values.position,
-      "wage": values.salary,
+      "price": values.price,
       "year": values.year,
     });
 
     console.log(res);
 
     setValues({
-      company: '',
-      newCompany: '',
-      newIndustry: '',
       newCity: '',
       newState: '',
       newZip: '',
       location: '',
-      position: '',
+      price: '',
       year: '',
-      salary: '',
     });
   }
 
-  useEffect(() => {
-    const fetchCompanyOptions = async () => {
-      console.log("fetching companies");
-      const companies = await axios.get("http://localhost:8000/api/employers/");
-      if (!companies || !companies.data || companies.data.length === 0) {
-        return null;
-      } 
-  
-      dispatch({
-        type: 'getCompanies',
-        companies: companies.data,
-      });
-    };
-    fetchCompanyOptions();
-  }, [didPost]);
 
   useEffect(() => {
     const fetchLocationOptions = async () => {
@@ -185,47 +138,10 @@ export default function WorkForm() {
 
   return (
       <Container className={classes.container}>
-          <Typography className={classes.header} position="static" component="h1" variant="h4">Add your work experience</Typography>
+          <Typography className={classes.header} position="static" component="h1" variant="h4">Add your housing experience</Typography>
           <Typography className={classes.subtitle} position="static" variant="subtitle1">Contribute and give back to the Blueberry community!</Typography>
-          <Typography className={classes.text} position="static" component="body1">
-            Which company did you work at?
-          </Typography>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              value={values.company}
-              onChange={handleChange('company')}
-            >
-          {renderAddNewCompany()}
-          {renderCompanyOptions()}
-        </Select>
-      </FormControl>
-      {values.company == "add-new-company" ? 
-      <React.Fragment>
-        <TextField
-          className={classes.subtext}
-          name = "new-company"
-          variant = "standard"
-          margin = "normal"
-          label = "Company Name"
-          value = {null}
-          onChange = {handleChange('newCompany')}
-        ></TextField>
-        <TextField
-          className={classes.subtext}
-          name = "new-industry"
-          variant = "standard"
-          margin = "normal"
-          label = "Industry Type"
-          value = {null}
-          onChange = {handleChange('newIndustry')}
-        ></TextField>
-        <Fab color="primary" onClick={postNewCompany()} size="small" aria-label="add" className={classes.fab}>
-          <AddIcon />
-        </Fab>
-      </React.Fragment> :
-        null}
             <Typography className={classes.text} position="static" component="body1">
-                Where was the office located? 
+                Where did you live?
           </Typography>
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -271,20 +187,7 @@ export default function WorkForm() {
       </React.Fragment> :
         null}
           <Typography className={classes.text} position="static" component="body1">
-                What position did you hold? 
-          </Typography>
-          <TextField 
-              name = "position"
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              label="Position"
-              value = {values.position}
-              onChange={handleChange('position')}
-            />
-          <Typography className={classes.text} position="static" component="body1">
-                When is this information from?
+                When did you live there?
           </Typography>
           <TextField 
               name = "year"
@@ -297,17 +200,17 @@ export default function WorkForm() {
               onChange={handleChange('year')}
             />
           <Typography className={classes.text} position="static" component="body1">
-                What was your salary?
+                How much did you buy/sell the property for?
           </Typography>
           <TextField 
-              name = "salary"
+              name = "price"
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              label="Salary"
-              value = {values.salary}
-              onChange={handleChange('salary')}
+              label="Price"
+              value = {values.price}
+              onChange={handleChange('price')}
             />
             <Button
               type="submit"
@@ -315,7 +218,7 @@ export default function WorkForm() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={postWorkForm()}
+              onClick={postHousingForm()}
             >
               Submit
             </Button>
