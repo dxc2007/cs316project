@@ -47,12 +47,12 @@ class WageBufferSerializer(serializers.ModelSerializer):
 class HousingPostingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HousingPosting
-        fields = ('postingid', 'siteid', 'uid', 'price', 'year')
+        fields = ('postingid', 'siteid', 'price', 'year')
 
 class HousingBufferSerializer(serializers.ModelSerializer):
     class Meta:
         model = HousingBuffer
-        fields = ('postingid', 'siteid', 'uid', 'price', 'year')
+        fields = ('postingid', 'siteid', 'price', 'year')
 
 class HousingPostingListSerializer(serializers.ModelSerializer):
 	# housingposting = serializers.PrimaryKeyRelatedField(many=True, queryset=HousingPosting.objects.all())
