@@ -14,7 +14,9 @@ const useStyles = makeStyles(theme => ({
     container: {
       flexGrow: 1, 
       display: 'flex',
+      flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'center',
       padding: '2px 4px',
     },
     textField: {
