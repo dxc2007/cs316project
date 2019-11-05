@@ -114,7 +114,7 @@ export default function WorkForm() {
       "state": values.newState,
     });
     setDidPost();
-    setValues({...values, location: res.data.siteid})
+    setValues({...values, location: res.data.siteid});
   }
 
   const postWorkForm = () => async () => {
