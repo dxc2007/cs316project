@@ -16,10 +16,10 @@ class WageBufferAdmin(admin.ModelAdmin):
     list_display = ('postingid', 'siteid', 'employerid', 'uid', 'position', 'wage', 'year')        
 
 class HousingPostingAdmin(admin.ModelAdmin):
-    list_display = ('postingid', 'siteid', 'uid', 'price', 'year')
+    list_display = ('postingid', 'siteid', 'price', 'year')
 
 class HousingBufferAdmin(admin.ModelAdmin):
-    list_display = ('postingid', 'siteid', 'uid', 'price', 'year')
+    list_display = ('postingid', 'siteid', 'price', 'year')
 
 # Register your models here.
 admin.site.register(Site, SiteAdmin)
