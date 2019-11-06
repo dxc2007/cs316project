@@ -39,26 +39,31 @@ export default function Pending() {
     const classes = useStyles();
 
     return(
-        <Container className={classes.root}>
-            <Container className={classes.table}>
-                <Grid className={classes.header} container xs={12}>
-                    <Grid item xs={10}>
-                        <Typography className={classes.title} variant="h2">
-                                Approve or Deny Pending Entries
-                        </Typography>
+        <div>
+            {!localStorage.getItem("key") ? 
+            (<div> login required </div>) :
+            (<Container className={classes.root}>
+                <Container className={classes.table}>
+                    <Grid className={classes.header} container xs={12}>
+                        <Grid item xs={10}>
+                            <Typography className={classes.title} variant="h2">
+                                    Approve or Deny Pending Entries
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Button className={classes.button} size="large">
+                                    <Link className={classes.link} to="/profile">
+                                        Back to Profile
+                                    </Link>
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={2}>
-                        <Button className={classes.button} size="large">
-                                <Link className={classes.link} to="/profile">
-                                    Back to Profile
-                                </Link>
-                        </Button>
-                    </Grid>
-                </Grid>
-
-                <RolesTable/>
-            </Container>
-        </Container>
+    
+                    <RolesTable/>
+                </Container>
+            </Container>)
+        }
+        </div>
         
     );
     

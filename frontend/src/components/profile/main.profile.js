@@ -29,10 +29,15 @@ export default function Profile() {
     const classes = useStyles();
 
     return(
-        <Container className={classes.root}>
-            <AccountCircleIcon className={classes.icon} style={{ fontSize: 150 }} />
-            <Typography className={classes.title}>Welcome, User</Typography>
-            <Options/>
-        </Container>
+        <div>
+            {!localStorage.getItem("key") ? 
+                (<div>Login in Required</div>) : 
+                (<Container className={classes.root}>
+                    <AccountCircleIcon className={classes.icon} style={{ fontSize: 150 }} />
+                    <Typography className={classes.title}>Welcome, User</Typography>
+                    <Options/>
+                </Container>)
+            }
+        </div>
     );
 }

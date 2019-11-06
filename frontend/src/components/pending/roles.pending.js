@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -20,29 +20,31 @@ import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList'
-import CheckIcon from '@material-ui/icons/Check';;
+import FilterListIcon from '@material-ui/icons/FilterList';
+import CheckIcon from '@material-ui/icons/Check';
+import axios from 'axios';
 
 
 function createData(company, location, position, year, wage, user, pID) {
   return { company, location, position, year, wage, user, pID};
 }
 
-const rows = [
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 1),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 2),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 3),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 4),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 5),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 6),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 7),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 8),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 9),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 10),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 11),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 12),
-  createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 13),
-];
+// const rows = [
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 1),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 2),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 3),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 4),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 5),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 6),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 7),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 8),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 9),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 10),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 11),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 12),
+//   createData('Google', 'Palo Alto', 'SWE', 2018, 140000, 'Jeff Dean', 13),
+// ];
+
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -235,6 +237,7 @@ const useStyles = makeStyles(theme => ({
 
 
   export default function RolesTable() {
+    // const rows = await getRows();
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('company');
@@ -242,6 +245,24 @@ const useStyles = makeStyles(theme => ({
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rows, setRows] = React.useState([]);
+
+
+    useEffect(() => {
+      const url = "http://localhost:8000/api/wagebuffers/";
+      axios.get(url).then(async function(res){
+        console.log("blah");
+        if(res.data){
+          setRows(await Promise.all(res.data.map(data => {
+            console.log(data)
+            return createData(data.employerid, data.siteid, data.position, data.year, data.wage, data.uid, data.postingid)
+          })))
+        }
+      }).catch(err => {
+        console.log(err);
+      })}, [])
+    
+
   
     const handleRequestSort = (event, property) => {
       const isDesc = orderBy === property && order === 'desc';
@@ -295,6 +316,7 @@ const useStyles = makeStyles(theme => ({
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
   
     return (
+      rows ?
       <div className={classes.root}>
         <Paper className={classes.paper}>
           <EnhancedTableToolbar numSelected={selected.length} />
@@ -376,6 +398,8 @@ const useStyles = makeStyles(theme => ({
           label="Dense padding"
         /> */}
       </div>
+      :
+      <div>loading</div>
     );
   }
 

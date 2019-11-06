@@ -9,35 +9,19 @@ import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios'
 
 const postRegister = async (post) => {
+  post.event.preventDefault();
   const url = "http://127.0.0.1:8000/rest-auth/create-user/";
   console.log(post.name)
   axios.post(url, {
     username: post.name,
     email: post.email,
     password: post.password
-  })
-  .then(res => {
-    console.log(res.password);
-  })
-  .catch(err => {
+  }).then(res => {
+    console.log(res.data);
+  }).catch(err => {
     console.log(err);
   });
 
-  // if (!housingInfo || !housingInfo.data || housingInfo.data.length === 0) {
-  //     return null;
-  // }
-
-  // if (housingInfo.data[0].housingposting.length > 0) {
-  //     const housingData = housingInfo.data[0].housingposting.map(posting => posting.price);
-  //     return {
-  //         ave: parseInt(housingData.reduce((a,b) => a + b, 0) / housingData.length), 
-  //         min: Math.min(...housingData), 
-  //         max: Math.max(...housingData)
-  //     }
-  // } else {
-  //     return null;
-  // }
-  post.event.preventDefault();
 }
 
 const useStyles = makeStyles(theme => ({
