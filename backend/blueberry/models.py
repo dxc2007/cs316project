@@ -41,19 +41,23 @@ class WageBuffer(models.Model):
     wage = models.IntegerField(validators=[MinValueValidator(0)])
     year = models.IntegerField()
 
+    def __str__(self):
+        return "{}".format(self.postingid)
+
 class HousingPosting(models.Model):
     postingid = models.AutoField(primary_key=True)
     siteid = models.ForeignKey(Site, related_name='housingposting', on_delete=models.PROTECT)
-    uid = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
     price = models.IntegerField(validators=[MinValueValidator(0)])
     year = models.IntegerField()
 
     def __str__(self):
-        return "{} {} {}".format(self.postingid, self.uid, self.year)
+        return "{} {}".format(self.postingid, self.year)
 
 class HousingBuffer(models.Model):
     postingid = models.AutoField(primary_key=True)
     siteid = models.ForeignKey(Site, on_delete=models.PROTECT)
-    uid = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
     price = models.IntegerField(validators=[MinValueValidator(0)])
     year = models.IntegerField()
+
+    def __str__(self):
+        return "{} {}".format(self.postingid, self.year)

@@ -105,7 +105,7 @@ function App() {
         <Route path="/login" component={Login}/>
         <Route path="/result" component={ResultPage}/>
         <Route path="/search" component={SearchPage}/>
-        <Route path='/contribute' component={Contribute}/>
+        <Route path='/contribute/:form' component={Contribute}/>
         <Route path='/account' component={Account}/>
         <Route path='/profile' component={Profile}/>
         <Route path='/pending' component={Pending}/>
