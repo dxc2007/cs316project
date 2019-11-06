@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 
 import RolesTable from './roles.pending';
-import HousesTable from './houses.pending';
 import { Typography, Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -58,7 +57,6 @@ export default function Pending() {
                 </Grid>
 
                 <RolesTable/>
-                <HousesTable/>
             </Container>
         </Container>
         

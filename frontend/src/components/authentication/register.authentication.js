@@ -6,6 +6,39 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from 'axios'
+
+const postRegister = async (post) => {
+  const url = "http://127.0.0.1:8000/rest-auth/create-user/";
+  console.log(post.name)
+  axios.post(url, {
+    username: post.name,
+    email: post.email,
+    password: post.password
+  })
+  .then(res => {
+    console.log(res.password);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+  // if (!housingInfo || !housingInfo.data || housingInfo.data.length === 0) {
+  //     return null;
+  // }
+
+  // if (housingInfo.data[0].housingposting.length > 0) {
+  //     const housingData = housingInfo.data[0].housingposting.map(posting => posting.price);
+  //     return {
+  //         ave: parseInt(housingData.reduce((a,b) => a + b, 0) / housingData.length), 
+  //         min: Math.min(...housingData), 
+  //         max: Math.max(...housingData)
+  //     }
+  // } else {
+  //     return null;
+  // }
+  post.event.preventDefault();
+}
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -84,6 +117,7 @@ export default function Register() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={event => postRegister({event: event, name: name, email:email, password: password, password2: password2})}
             >
               Register
             </Button>
