@@ -9,13 +9,16 @@ class Site(models.Model):
     city = models.CharField(max_length=256)
     state = models.CharField(max_length=256)
 
+    class Meta:
+        unique_together = ('zip_code', 'city', 'state')
+
     def __str__(self):
         return "{}, {} {}".format(self.city, self.state, self.zip_code)
 
 class Employer(models.Model):
     employerid = models.AutoField(primary_key=True)
-    employer_name = models.CharField(max_length=256)
-    industry = models.CharField(max_length=256)
+    employer_name = models.CharField(max_length=256, unique=True)
+    industry = models.CharField(max_length=256, null=True)
 
     def __str__(self):
         return "{}, {}".format(self.employer_name, self.industry)
@@ -41,9 +44,6 @@ class WageBuffer(models.Model):
     wage = models.IntegerField(validators=[MinValueValidator(0)])
     year = models.IntegerField()
 
-    def __str__(self):
-        return "{}".format(self.postingid)
-
 class HousingPosting(models.Model):
     postingid = models.AutoField(primary_key=True)
     siteid = models.ForeignKey(Site, related_name='housingposting', on_delete=models.PROTECT)
@@ -51,13 +51,10 @@ class HousingPosting(models.Model):
     year = models.IntegerField()
 
     def __str__(self):
-        return "{} {}".format(self.postingid, self.year)
+        return "{} {} {}".format(self.postingid, self.uid, self.year)
 
 class HousingBuffer(models.Model):
     postingid = models.AutoField(primary_key=True)
     siteid = models.ForeignKey(Site, on_delete=models.PROTECT)
     price = models.IntegerField(validators=[MinValueValidator(0)])
     year = models.IntegerField()
-
-    def __str__(self):
-        return "{} {}".format(self.postingid, self.year)

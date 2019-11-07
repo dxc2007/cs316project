@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
     'django_filters',
-    'todo',
     'blueberry'
 ]
 
@@ -125,6 +124,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_REQUIRED = True   
+# ACCOUNT_USERNAME_REQUIRED = False
 
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'

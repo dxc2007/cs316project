@@ -12,7 +12,6 @@ django-cors-headers = "*"
 npm = "*"
 djangorestframework-filters = "==1.0.0.dev0"
 django-rest-auth = {extras = ["with-social"],version = "*"}
-allauth = "*"
 django-allauth = "*"
 
 [requires]

@@ -20,11 +20,9 @@ from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from django_filters.views import FilterView
 
-from todo import views as todo_views
 from blueberry import views as blueberry_views
 
 router = routers.DefaultRouter()
-router.register(r'todos', todo_views.TodoView, 'todo')
 router.register(r'sites', blueberry_views.SiteView, 'site')
 router.register(r'employers', blueberry_views.EmployerView, 'employer')
 router.register(r'wagepostings', blueberry_views.WagePostingView, 'wageposting')
