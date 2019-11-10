@@ -32,8 +32,6 @@ router.register(r'housingbuffers', blueberry_views.HousingBufferView, 'housingbu
 router.register(r'housingprices', blueberry_views.HousingPriceList, 'housingprice')
 router.register(r'wages', blueberry_views.WagesList, 'wage')
 router.register(r'userwagepostings', blueberry_views.UserWagesPostingList, 'userwageposting')
-router.register(r'userhousingpostings', blueberry_views.UserHousingPostingList, 'userhousingposting')
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),

@@ -118,12 +118,3 @@ class UserWagesPostingList(viewsets.ModelViewSet):
 		queryset = WagePosting.objects.filter(uid=user)
 		return queryset
 
-class UserHousingPostingList(viewsets.ModelViewSet):
-	permission_classes = (IsAuthenticated,)
-	serializer_class = HousingPostingSerializer
-
-	def get_queryset(self):
-		user = self.request.user
-		queryset = HousingPosting.objects.filter(uid=user)
-		return queryset
-
