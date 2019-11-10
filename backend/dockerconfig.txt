@@ -1,0 +1,1000 @@
+ 1068  vim stack1_ub_summary_1500_cubic.txt 
+ 1069  vim stack1_ub_summary_1500_linear.txt 
+ 1070  vim ub_stack.sh 
+ 1071  vim ub_stack_template.sh 
+ 1072  vim ub_stack_pipeline.sh 
+ 1073  vim ub_stack.sh 
+ 1074  ./ub_stack
+ 1075  ./ub_stack.sh 
+ 1076  vim ub_stack.sh 
+ 1077  vim ub_stack_pipeline.sh 
+ 1078  ls
+ 1079  cd ..
+ 1080  ls
+ 1081  cd ..
+ 1082  l;s
+ 1083  cd -
+ 1084  ls
+ 1085  cd bm3d_summovie/
+ 1086  ls
+ 1087  vim half_refine_pipeline.sh 
+ 1088  cat half_refine_pipeline.sh 
+ 1089  cd ..
+ 1090  cd bm3d_summovie/
+ 1091  ls
+ 1092  vim half_refine_pipeline.sh 
+ 1093  cd ../unblur_bm3d_summovie/
+ 1094  ls
+ 1095  ./unblur_bm3d_half.sh 
+ 1096  ls
+ 1097  cd Documents/
+ 1098  ls
+ 1099  cd 590project/
+ 1100  ls
+ 1101  echo $PATH
+ 1102  summovie
+ 1103  ls
+ 1104  cd masterscripts/
+ 1105  cd unblur_bm3d_summovie/
+ 1106  ls
+ 1107  ./half_refine_pipeline.sh 
+ 1108  ls
+ 1109  vim summovie.sh 
+ 1110  source activate cs590
+ 1111  ./half_refine_pipeline.sh 
+ 1112  ls
+ 1113  vim format_summovie_shifts.py 
+ 1114  vim format_newstack_shifts.py 
+ 1115  vim format_summovie_shifts.py 
+ 1116  ./half_refine_pipeline.sh 
+ 1117  ls
+ 1118  imod stack19_bm3d_diagnostic_1_1.0_0_0_half.mrc 
+ 1119  mv half_refine_pipeline_template.sh bm3d_half_pipeline.sh
+ 1120  mv half_refine_pipeline.sh bm3d_half.sh
+ 1121  vim bm3d_half.sh 
+ 1122  ./bm3d_half.sh 
+ 1123  ls
+ 1124  rm stack19_*
+ 1125  ls
+ 1126  mv ub_stack.sh ub_stack_pipeline.sh
+ 1127  mv ub_pipeline.sh ub_stack.sh
+ 1128  vim ub_pipeline.sh 
+ 1129  ls
+ 1130  vim ub_stack_pipeline.sh 
+ 1131  vim ub_pipeline.sh 
+ 1132  ./ub_pipeline.sh 
+ 1133  ls
+ 1134  vim unblue_bm3d_summovie.sh 
+ 1135  ls
+ 1136  clip average stack19_ub_stacked_250.mrc ub_averaged.mrc
+ 1137  vim ub_averaged.mrc 
+ 1138  imod ub_averaged.mrc 
+ 1139  vim ub_pipeline.sh 
+ 1140  imod ub_averaged.mrc 
+ 1141  vim ub_stack.sh 
+ 1142  ./ub_stack.sh 
+ 1143  ls
+ 1144  clip average stack19_ub_stacked_250.mrc ub_averaged.mrc
+ 1145  vim ub_pipeline.sh 
+ 1146  imod ub_averaged.mrc 
+ 1147  ctffind
+ 1148  vim ctffind.sh 
+ 1149  imod diagnostic_output.mrc 
+ 1150  ls
+ 1151  vim ub_stack_pipeline.sh 
+ 1152  ls
+ 1153  vim unblur_bm3d_summovie_cubic.sh 
+ 1154  vim 
+ 1155  vim unblur_bm3d_summovie
+ 1156  mv unblur_bm3d_summovie unblur_bm3d_summovie_linear.sh
+ 1157  rm unblue_bm3d_summovie.sh 
+ 1158  vim unblur_bm3d_summovie_linear.sh 
+ 1159  cp ub_stack.sh unblur_bm3d_summovie.sh
+ 1160  ls
+ 1161  vim unblur_bm3d_summovie.sh 
+ 1162  ./unblur_bm3d_summovie.sh 
+ 1163  chmod +x unblur_bm3d_summovie*.sh
+ 1164  ls
+ 1165  ./unblur_bm3d_summovie.sh 
+ 1166  vim unblur_bm3d_summovie.sh 
+ 1167  vim unblur_bm3d_summovie_cubic.sh 
+ 1168  ./unblur_bm3d_summovie.sh 
+ 1169  vim unblur_bm3d_summovie_cubic.sh 
+ 1170  ls
+ 1171  pwd
+ 1172  ls
+ 1173  vim bm3d_halfstack10
+ 1174  vim bm3d_half_pipeline.sh 
+ 1175  rm *.txt
+ 1176  rm *ub*.mrc
+ 1177  ls
+ 1178  rm *ub*.mrc~
+ 1179  ls
+ 1180  chmod +x bm3d_half_pipeline.sh 
+ 1181  ls
+ 1182  vim bm3d_half_pipeline.sh 
+ 1183  ls
+ 1184  bm3d_half.sh
+ 1185  vim bm3d_half.sh 
+ 1186  ./bm3d_half.sh 
+ 1187  ls
+ 1188  vim bm3d_half_pipeline.sh 
+ 1189  vim format_summovie_shifts.py 
+ 1190  vim bm3d_half_pipeline.sh 
+ 1191  ./bm3d_half.sh 
+ 1192  ls
+ 1193  pwd
+ 1194  imod stack19_bm3d_diagnostic_1_1.0_0_0_half.mrc 
+ 1195  pwd
+ 1196  cp bm3d_half_pipeline.sh unblur_bm3d_half_pipeline.sh
+ 1197  vim unblur_bm3d_half_pipeline.sh 
+ 1198  ls
+ 1199  rm just*
+ 1200  ls
+ 1201  rm *just*
+ 1202  ls
+ 1203  vim ub_stack_pipeline.sh 
+ 1204  vim ub_pipeline.sh 
+ 1205  vim ub_pipeline.sh 
+ 1206  mv ub_pipeline.sh ub_average.sh
+ 1207  mv ub_pipeline_template.sh ub_average_pipeline.sh
+ 1208  vim ub_average.sh 
+ 1209  ls
+ 1210  vim ub_stack_pipeline.sh 
+ 1211  ./ub_average.sh 
+ 1212  vim ub_stack_pipeline.sh 
+ 1213  ./ub_average.sh 
+ 1214  ls
+ 1215  vim ub_stack_pipeline.sh 
+ 1216  vim ub_average_pipeline.sh 
+ 1217  ./ub_average.sh 
+ 1218  vim ub_average_pipeline.sh 
+ 1219  ./ub_average.sh 
+ 1220  ls
+ 1221  ./ub_average.sh 
+ 1222  vim ub_average_pipeline.sh 
+ 1223  vim unblurx2_average_pipeline.sh 
+ 1224  cp ub_average.sh unblurx2_average.sh
+ 1225  vim unblurx2_average_pipeline.sh 
+ 1226  vim unblurx2_average.sh 
+ 1227  ./unblurx2_average.sh 
+ 1228  vim unblurx2_average.sh 
+ 1229  ./unblurx2_average.sh 
+ 1230  vim unblurx2_average.sh 
+ 1231  ./unblurx2_average.sh 
+ 1232  vim unblurx2_average.sh 
+ 1233  ./unblurx2_average.sh 
+ 1234  vim unblurx2_average.sh 
+ 1235  ./unblurx2_average.sh 
+ 1236  vim unblurx2_average.sh 
+ 1237  cat unblurx2_average.sh 
+ 1238  vim unblurx2_average.sh 
+ 1239  vim unblurx2_average_pipeline.sh.sh 
+ 1240  vim unblurx2_average_pipeline.sh
+ 1241  vim unblurx2_average.sh 
+ 1242  chmod +x unblurx2_average_pipeline.sh 
+ 1243  vi unblurx2_average_pipeline.sh 
+ 1244  vi unblurx2_average.sh 
+ 1245  ./unblurx2_average.sh 
+ 1246  ls *.sh
+ 1247  vi unblurx2_average.sh 
+ 1248  ls
+ 1249  ls *.sh
+ 1250  vim unblurx2_average.sh 
+ 1251  ./unblurx2_average.sh 
+ 1252  vim stack19_ubx2_summary_250.txt 
+ 1253  vim unblurx2_average.sh 
+ 1254  ./unblurx2_average.sh 
+ 1255  vim vim unblur_bm3d_half_pipeline.sh 
+ 1256  vim unblur_bm3d_half_pipeline.sh 
+ 1257  ls
+ 1258  vim unblurx2_average_pipeline.sh 
+ 1259  ./unblurx2_average.sh 
+ 1260  ls
+ 1261  vim unblurx2_average_pipeline.sh 
+ 1262  ./unblurx2_average.sh 
+ 1263  vim stack19_ubx2_summary_250.txt 
+ 1264  vim unblurx2_average_pipeline.sh 
+ 1265  vim stack19_ubx2_summary_50.txt 
+ 1266  vim unblurx2_average_pipeline.sh 
+ 1267  vim stack19_ubx2_summary_50.txt 
+ 1268  vim stack19_ubx2_summary_0.txt 
+ 1269  vim unblurx2_average_pipeline.sh 
+ 1270  vim bm3d_first_step_filtering.py 
+ 1271  cd ../../unblur_bm3d/
+ 1272  ls
+ 1273  ./unblur_bm3d_half.sh 
+ 1274  vim unblur_bm3d_half.sh 
+ 1275  vim unblur_bm3d_half_pipeline.sh 
+ 1276  vim unblur_bm3d_half.sh 
+ 1277  ./unblur_bm3d_half.sh 
+ 1278  vim unblur_bm3d_half.sh 
+ 1279  python bm3d_first_step_filtering.py stack19_ub_stacked_250.mrc stack19_ubbm3d_1_0.0_0_250_half.mrc 1 0.0 0
+ 1280  vim unblur.sh 
+ 1281  bash unblur.sh stack19_ubbm3d_1_0.0_0_50_half.mrc 50 
+ 1282  bash unblur.sh stack19_ubbm3d_1_0.0_0_50_half.mrc 50
+ 1283  unblur
+ 1284  vim unblur.sh 
+ 1285  bash unblur.sh stack19_ubbm3d_1_0.0_0_50_half 50
+ 1286  bash unblur.sh stack19_ubbm3d_1_0.0_0_50_half 50 > stack19_ubbm3d_shifts_1_0.0_0_50_half_raw.txt 
+ 1287  python format_summovie_shifts.py stack19_ubbm3d_shifts_1_0.0_0_50_half_raw.txt 3
+ 1288  bash summovie.sh stack19_ubbm3d_1_0.0_0_50_half.mrc stack19_ubbm3d_averaged_1_0.0_0_50_half.mrc stack19_ubbm3d_shifts_1_0.0_0_50_half_summovie.txt stack19_ubbm3d_frc_1_0.0_0_50_half.txt
+ 1289  bash summovie.sh stack19_ubbm3d_1_0.0_0_50_half.mrc stack19_ubbm3d_averaged_1_0.0_0_50_half.mrc stack19_ubbm3d_shifts_1_0.0_0_50_half_summovie.txt stack19_ubbm3d_frc_1_0.0_0_50_half.txt > /dev/null
+ 1290  bash ctffind.sh stack19_ubbm3d_averaged_1_0.0_0_50_half.mrc stack19_ubbm3d_diagnostic_1_0.0_0_50_half.mrc
+ 1291  rm *.txt
+ 1292  rm stack19*.mrc
+ 1293  ./unblur_bm3d_half.sh 
+ 1294  ls stack19_ub_stacked_250.mrc
+ 1295  vim unblur_bm3d_half.sh 
+ 1296  vim unblur_bm3d_half_pipeline.sh 
+ 1297  bash unblur.sh stack19 250 > stack19_ub_shifts_250_raw.txt
+ 1298  ./unblur_bm3d_half.sh 
+ 1299  vim unblur_bm3d_half.sh 
+ 1300  vim unblur_bm3d_half_pipeline.sh 
+ 1301  summovie
+ 1302  vim unblur_bm3d_half_pipeline.sh 
+ 1303  ./unblur_bm3d_half.sh 
+ 1304  vim unblur_bm3d_half_pipeline.sh 
+ 1305  ./unblur_bm3d_half.sh 
+ 1306  vim unblur_bm3d_half_pipeline.sh 
+ 1307  vim unblur_bm3d_half.sh 
+ 1308  ./unblur_bm3d_half.sh 
+ 1309  vim unblur_bm3d_half.sh 
+ 1310  vim unblur_bm3d_half_pipeline.sh 
+ 1311  cp unblur_bm3d_half_pipeline.sh ../masterscripts/unblur_bm3d_summovie/
+ 1312  cd ../masterscripts/unblur_bm3d_summovie/
+ 1313  ./unblur_bm3d_half.sh 
+ 1314  cd -
+ 1315  ls
+ 1316  vim ub_stack_pipeline.sh 
+ 1317  vim unblur_bm3d_half.sh 
+ 1318  ./unblur_bm3d_half.sh 
+ 1319  cd ~/Documents/590project/
+ 1320  ls
+ 1321  cd masterscripts/
+ 1322  cd unblur_bm3d_summovie/
+ 1323  ls
+ 1324  summovie
+ 1325  pwd
+ 1326  ./unblur_bm3d_half.sh
+ 1327  ls
+ 1328  vim unblur_bm3d_half_pipeline.sh 
+ 1329  cat unblur_bm3d_half_pipeline.sh 
+ 1330  vim unblur_bm3d_half_pipeline.sh 
+ 1331  ./unblur_bm3d_half.sh
+ 1332  ls
+ 1333  imod stack19_ubbm3d_diagnostic_1_1.0_0_50_half.mrc
+ 1334  imod stack19_ubbm3d_summary_1_1.0_0_50_half.txt 
+ 1335  cat stack19_ubbm3d_summary_1_1.0_0_50_half.txt 
+ 1336  ls
+ 1337  pwd
+ 1338  ls
+ 1339  ./ub_average.sh 
+ 1340  ls *.sh
+ 1341  vi bm3d_half.sh 
+ 1342  ./bm3d_half.sh 
+ 1343  ./bm3d_half_pipeline.sh 
+ 1344  vi bm3d_half_pipeline.sh 
+ 1345  ./bm3d_half.sh 
+ 1346  ls
+ 1347  ls *.sh
+ 1348  rm pure_unblur.sh 
+ 1349  ls
+ 1350  ls *.sh
+ 1351  vim half_refine_pipeline_template.sh 
+ 1352  rm half_refine_pipeline_template.sh 
+ 1353  ls *.sh
+ 1354  vi ub_average_pipeline.sh 
+ 1355  vi ub_average.sh 
+ 1356  ./ub_average.sh 
+ 1357  ls *.sh
+ 1358  cp ub_average.sh ub_stack.sh 
+ 1359  ./ub_stack.sh 
+ 1360  vim ub_stack_pipeline.sh 
+ 1361  ./ub_stack.sh 
+ 1362  ls *.sh
+ 1363  cp ub_average.sh unblur_bm3d_half.sh 
+ 1364  ./unblur_bm3d_half.sh 
+ 1365  source activate cs590
+ 1366  ./unblur_bm3d_half.sh 
+ 1367  ls *.sh
+ 1368  cat unblur_bm3d_half.sh 
+ 1369  vim unblur_bm3d_half.sh 
+ 1370  ./unblur_bm3d_half.sh 
+ 1371  vim _1_0.0_0_200_half_summovie.txt
+ 1372  I./unblur_bm3d_half.sh 
+ 1373  vim stack19_ubbm3d_summary_1_0.0_0_200_half_summovie.txt   
+ 1374  vim unblur_bm3d_half.sh
+ 1375  vim stack19_ubbm3d_summary_1_0.0_0_200_half.txt
+ 1376  vim unblur_bm3d_half_pipeline.sh 
+ 1377  vim unblur_bm3d_half.sh 
+ 1378  ./unblur_bm3d_half.sh 
+ 1379  vim unblur_bm3d_half.sh 
+ 1380  vim stack19_ubbm3d_summary_1_0.0_0_200_half.txt
+ 1381  vim stack19_ubbm3d_summary_1_1.0_0_250_half.txt
+ 1382  ls
+ 1383  rm stack19*.mrc
+ 1384  ls
+ 1385  rm stack19*.txt
+ 1386  ls
+ 1387  rm *.txt
+ 1388  ls
+ 1389  rm stack19*.mrc~
+ 1390  ls
+ 1391  vim unblur_bm3d_half.sh 
+ 1392  ./unblur_bm3d_half.sh 
+ 1393  vim unblur_bm3d_half.sh 
+ 1394  vim unblur_bm3d_half_template.sh 
+ 1395  vim unblur_bm3d_half_pipeline.sh 
+ 1396  ./unblur_bm3d_half.sh 
+ 1397  vim ub_stack_pipeline.sh 
+ 1398  ./unblur_bm3d_half.sh 
+ 1399  vim stack19_ubbm3d_summary_1_0.0_0_250_half.txt 
+ 1400  cd ../../unblur_bm3d/
+ 1401  ls
+ 1402  cd -
+ 1403  vim stack19_ubbm3d_summary_1_0.0_0_250_half.txt 
+ 1404  vim unblur_bm3d_half_pipeline.sh 
+ 1405  vim stack19_ubbm3d_summary_1_0.0_0_50_half.txt 
+ 1406  vim stack19_ubbm3d_summary_1_1.0_0_50_half.txt 
+ 1407  cat unblur_bm3d_half.sh 
+ 1408  cat unblur_bm3d_half_pipeline.sh 
+ 1409  vim stack19_ubbm3d_summary_1_1.0_0_50_half.txt 
+ 1410  vim stack19_ubbm3d_summary_1_0.0_0_50_half.txt 
+ 1411  vim stack19_ubbm3d_summary_1_0.0_0_750_half.txt 
+ 1412  vim stack19_ubbm3d_summary_1_0.0_0_500_half.txt 
+ 1413  cat unblur_bm3d_half.sh 
+ 1414  vim stack19_ubbm3d_summary_1_0.0_0_0_half.txt 
+ 1415  cat unblur_bm3d_half_pipeline.sh 
+ 1416  vim unblur_bm3d_half.sh 
+ 1417  vim unblur_bm3d_half_pipeline.sh 
+ 1418  vim stack19_ubbm3d_summary_1_0.0_0_50_half.txt 
+ 1419  vim unblur_bm3d_half_pipeline.sh 
+ 1420  ./unblur_bm3d_half.sh 
+ 1421  vim stack19_ubbm3d_summary_1_0.0_0_50_half.txt 
+ 1422  vim unblur_bm3d_half_pipeline.sh 
+ 1423  ./unblur_bm3d_half.sh 
+ 1424  vim unblur_bm3d_half_pipeline.sh 
+ 1425  vim stack19_ubbm3d_summary_1_0.0_0_50_half.txt 
+ 1426  vim stack19_ubbm3d_summary_1_0.0_0_0_half.txt 
+ 1427  vim stack19_ubbm3d_summary_1_0.0_0_250_half.txt 
+ 1428  vim unblur_bm3d_half_pipeline.sh 
+ 1429  ls
+ 1430  rm *stacked*.mrc
+ 1431  vim unblur_bm3d_half_pipeline.sh 
+ 1432  cd ../../unblur_bm3d/
+ 1433  ls
+ 1434  vim unblur_bm3d_half_pipeline.sh 
+ 1435  vim ub_stack_pipeline.sh 
+ 1436  ls
+ 1437  vim ub_stack_pipeline.sh 
+ 1438  vim unblur_bm3d_half_pipeline.sh 
+ 1439  ls]
+ 1440  ls
+ 1441  vim format_unblur_output.py 
+ 1442  pwd
+ 1443  ls
+ 1444  mv format_unblur_output.py format_newstack_shifts.py
+ 1445  ls
+ 1446  vim ub_pipeline.sh 
+ 1447  vim ub_pipeline_template.sh.sh 
+ 1448  vim ub_pipeline_template.sh
+ 1449  lws
+ 1450  ls
+ 1451  mv ub_pipeline_template.sh ub_stack.sh
+ 1452  vim unblur.sh 
+ 1453  ls
+ 1454  pwd
+ 1455  vim pure_unblur.sh 
+ 1456  diff pure_unblur.sh unblur.sh 
+ 1457  diff ctffind.sh pure_ctffind.sh 
+ 1458  vim pure_ctffind.sh 
+ 1459  vim ctffind.sh 
+ 1460  rm pure_ctffind.sh 
+ 1461  vim unblur.sh 
+ 1462  diff unblur.sh pure_unblur.sh 
+ 1463  ls
+ 1464  rm ub_pipeline_template.sh 
+ 1465  vim half_refine_pipeline.sh 
+ 1466  ./half_refine_pipeline.sh 
+ 1467  conda activate cs590
+ 1468  ./half_refine_pipeline.sh 
+ 1469  ls
+ 1470  source deactivate
+ 1471  conda deactivate
+ 1472  ls
+ 1473  cd ..
+ 1474  ls
+ 1475  cd ..
+ 1476  ls
+ 1477  cd summovie_1.0.2/
+ 1478  ls
+ 1479  cd bin/
+ 1480  ls
+ 1481  cd ./.
+ 1482  cd ..
+ 1483  ls
+ 1484  summovie
+ 1485  echo $PATH
+ 1486  pwd
+ 1487  cd bin/
+ 1488  cat pwd
+ 1489  pwd | cat
+ 1490  export PATH:$PATH=/home/xiaochen/Documents/590project/summovie_1.0.2/bin
+ 1491  export PATH=$PATH:/home/xiaochen/Documents/590project/summovie_1.0.2/bin
+ 1492  echo PATH
+ 1493  echo $PATH
+ 1494  vim ~/.bashrc 
+ 1495  ls
+ 1496  cd
+ 1497  cd ~/Documents/590project/masterscripts/
+ 1498  ls
+ 1499  cd unblur_bm3d_summovie/
+ 1500  ls
+ 1501  vim summovie.sh 
+ 1502  vim half_refine_pipeline.sh 
+ 1503  vim half_refine_pipeline_template.sh 
+ 1504  vim ub_pipeline.sh 
+ 1505  vim ub_pipeline_template.sh 
+ 1506  cd //[3~[3~[2~[2~
+ 1507  cd ../../finetune_part1/
+ 1508  ls
+ 1509  imod stack19_bm3d_diagnostic_1_3.0_0_1250_half.mrc 
+ 1510  imod stack19_bm3d_averaged_1_3.0_0_1250_half.mrc 
+ 1511  vim stack19_bm3d_summary_1_0.0_0_250_half.txt 
+ 1512  imod stack19_bm3d_summary_1_0.0_0_250_half.txt 
+ 1513  imod stack19_bm3d_summary_1_0.0_0_250_half.mrc
+ 1514  imod stack19_bm3d_diagnostic_1_0.0_0_250_half.mrc
+ 1515  ls
+ 1516  pwd
+ 1517  ls
+ 1518  pwd
+ 1519  ls
+ 1520  cd ../
+ 1521  ls
+ 1522  cd test_data/
+ 1523  ls
+ 1524  vi ub_summ_pipeline.sh 
+ 1525  ls *x3.sh
+ 1526  vim refine_pipeline_x3.sh 
+ 1527  ls
+ 1528  conda activate cs590
+ 1529  ls
+ 1530  cd ...
+ 1531  cd ..
+ 1532  ls
+ 1533  jupyter notebook
+ 1534  cd Documents/590project/
+ 1535  ls
+ 1536  cd unblur_bm3d/
+ 1537  ls
+ 1538  rm *.mrc
+ 1539  -g
+ 1540  top
+ 1541  ps -A
+ 1542  rm *.mrc
+ 1543  rm *.txt
+ 1544  ./unblur_bm3d_half.sh 
+ 1545  source activate cs590
+ 1546  ./unblur_bm3d_half.sh 
+ 1547  ls
+ 1548  cd Documents/590project/unblur_bm3d/
+ 1549  rm *.mrc
+ 1550  rm *.txt
+ 1551  source activate cs590
+ 1552  ls
+ 1553  ./unblur_bm3d_half
+ 1554  ./unblur_bm3d_half.sh 
+ 1555  dcoker
+ 1556  docker
+ 1557  docker --version
+ 1558  sudo pip install docker-compose
+ 1559  which pythohn
+ 1560  which python
+ 1561  python
+ 1562  conda install pip
+ 1563  ls
+ 1564  cd ..
+ 1565  ls
+ 1566  cd ..
+ 1567  ls
+ 1568  cd ~/Documents/
+ 1569  cd 590project/
+ 1570  ls
+ 1571  cd unblur_bm3d_1to5/
+ 1572  ls
+ 1573  rm stack{1..5}_*.mrc
+ 1574  ls
+ 1575  rm stack{1..5}_*.txt
+ 1576  ls
+ 1577  ./unblur_bm3d_half.sh 
+ 1578  source activate cs590
+ 1579  ./unblur_bm3d_half.sh 
+ 1580  rm stack{1..5}_*.txt
+ 1581  rm stack{1..5}_*.mrc
+ 1582  ./unblur_bm3d_half.sh 
+ 1583  cd ../unblur_bm3d_6to10/
+ 1584  rm stack{1..5}_*.mrc
+ 1585  rm stack{1..5}_*.txt
+ 1586  rm stack{6..10}_*.txt
+ 1587  rm stack{6..10}_*.mrc
+ 1588  cp unblur_bm3d_half_pipeline.sh ../unblur_bm3d_11to15/
+ 1589  cp unblur_bm3d_half_pipeline.sh ../unblur_bm3d_16to20/
+ 1590  cd ../unblur_bm3d_11to15/
+ 1591  rm stack{1..20}_*.mrc
+ 1592  rm stack{1..20}_*.txt
+ 1593  cd ../unblur_bm3d_16to20/
+ 1594  l
+ 1595  rm stack{1..20}_*.txt
+ 1596  rm stack{1..20}_*.mrc
+ 1597  ls
+ 1598  ./unblur_bm3d_half.sh 
+ 1599  cd ../unblur_bm3d_1to5/
+ 1600  ls
+ 1601  mkdir ../ub_bm3d_1to5_fine; mv *.txt *.ipynb ../ub_bm3d_1to5_fine
+ 1602  ls
+ 1603  cd backend/
+ 1604  python manage.py runserver
+ 1605  python manage.py makemigrations
+ 1606  ls
+ 1607  pwd
+ 1608  cd ..
+ 1609  ls
+ 1610  cd ..
+ 1611  ls
+ 1612  exit
+ 1613  ls
+ 1614  docker
+ 1615  exut
+ 1616  exit
+ 1617  pipenv shell'
+ 1618  /
+ 1619  \
+ 1620  pipenv shell
+ 1621  docker
+ 1622  pipenv shell
+ 1623  cd backend/
+ 1624  python manage.py migrate
+ 1625  docker run hello-world
+ 1626  sudo docker run hello-world
+ 1627  ls
+ 1628  touch Dockerfile
+ 1629  vi Dockerfile 
+ 1630  docker build .
+ 1631  sudo docker build .
+ 1632  ls
+ 1633  cd backend/
+ 1634  ls
+ 1635  cd ..
+ 1636  ls
+ 1637  cd ..
+ 1638  pwd
+ 1639  ls
+ 1640  cd -
+ 1641  ls
+ 1642  cd backend/
+ 1643  ls
+ 1644  mv Dockerfile ..
+ 1645  ls
+ 1646  cd ..
+ 1647  ls
+ 1648  sudo docker build .
+ 1649  ls
+ 1650  sudo docker build .
+ 1651  ls
+ 1652  vim Dockerfile 
+ 1653  sudo docker build .
+ 1654  vim
+ 1655  vim Dockerfile 
+ 1656  sudo docker build .
+ 1657  vim docker-compose.yml
+ 1658  pipenv install psycopg2-binary
+ 1659  ls
+ 1660  cd backend/
+ 1661  ls
+ 1662  cd backend/
+ 1663  ls
+ 1664  vim settings.py 
+ 1665  ls
+ 1666  cd ..
+ 1667  ls
+ 1668  cd ..
+ 1669  ls
+ 1670  chmod +x docker-compose.yml 
+ 1671  docker-compose
+ 1672  pip install docker-compose
+ 1673  docker-compose run web python /cs316code/manage.py migrate
+ 1674  sudo docker-compose run web python /cs316code/manage.py migrate
+ 1675  docker-compose run web python /cs316code/manage.py migrate
+ 1676  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1677  ls
+ 1678  docker info
+ 1679  sudo docker info
+ 1680  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1681  dockerd
+ 1682  sudo dockerd
+ 1683  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1684  vim docker-compose.yml 
+ 1685  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1686  sudo docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1687  sudo
+ 1688  vim docker-compose.yml 
+ 1689  sudo usermod -aG docker $USER
+ 1690  sudo chmod 755 -R .
+ 1691  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1692  sudo service docker status
+ 1693  sudo ls -la /var/run/docker.sock
+ 1694  sudo usermod -aG docker ${USER}
+ 1695  docker logout
+ 1696  docker logout localhost:8080
+ 1697  docker logout 0.0.0.0:8080
+ 1698  sudo groupadd docker 
+ 1699  /usr/local/bin/docker-compose
+ 1700  docker-compos
+ 1701  docker-compose
+ 1702  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1703  ls
+ 1704  cd backend/
+ 1705  python manage.py runsever
+ 1706  python manage.py runserver
+ 1707  cd ..
+ 1708  pipenv install
+ 1709  cd backend/
+ 1710  ls
+ 1711  python manage.py runserver
+ 1712  cd ../unblur_bm3d_1to5/
+ 1713  ls
+ 1714  rm stack{1..20}_*.mrc
+ 1715  ls
+ 1716  vim unblur_bm3d_half.sh 
+ 1717  source activate cs590
+ 1718  ./unblur_bm3d_half.sh 
+ 1719  rm *.mrc
+ 1720  rm *.txt
+ 1721  rm *.mrc
+ 1722  rm *.txt
+ 1723  rm *.txt\
+ 1724  rm *.mrc
+ 1725  rm *.txtrm *.txt
+ 1726  rm *.txt
+ 1727  rm *.mrc
+ 1728  rm *.txt
+ 1729  rm *.mrc
+ 1730  rm *.txt
+ 1731  ./unblur_bm3d_half_pipeline.sh 
+ 1732  ./unblur_bm3d_half.sh 
+ 1733  source activate cs590
+ 1734  ./unblur_bm3d_half.sh 
+ 1735  rm *.txt
+ 1736  ls
+ 1737  rm *ubbm3d*.mrc
+ 1738  ls
+ 1739  rm *ubbm3d*.mrc
+ 1740  rm *ubbm3d*.mrc~
+ 1741  ls
+ 1742  rm *ub*.mrc
+ 1743  ls
+ 1744  rm *ub*.mrc~
+ 1745  ls
+ 1746  ./unblur_bm3d_half.sh 
+ 1747  killl -a
+ 1748  ill
+ 1749  kill
+ 1750  vim unblur_bm3d_half.sh 
+ 1751  rm *.mrc
+ 1752  rm *.txt
+ 1753  ./unblur_bm3d_half.sh 
+ 1754  vim unblur_bm3d_half.sh 
+ 1755  ./unblur_bm3d_half.sh 
+ 1756  ls
+ 1757  cd ..
+ 1758  ls
+ 1759  cd unblur_bm3d_6to10/
+ 1760  ls
+ 1761  vim unblur_bm3d_half_pipeline.sh 
+ 1762  vim unblur_bm3d_half.sh 
+ 1763  ./unblur_bm3d_half.sh 
+ 1764  ls
+ 1765  ls *averaged*.mrc
+ 1766  imod stack6_ubbm3d_averaged_1_3.5_0_1000_half.mrc
+ 1767  imod stack6_ubbm3d_averaged_1_0.0_0_1000_half.mrc 
+ 1768  vim stack6_ubbm3d_summary_1_0.0_0_1000_half.txt
+ 1769  cat stack6_ubbm3d_summary_1_0.0_0_1000_half.txt
+ 1770  vim stack6_ubbm3d_summary_1_3.5_0_1000_half.txt
+ 1771  cat stack6_ubbm3d_summary_1_3.5_0_1000_half.txt
+ 1772  ls
+ 1773  ls *.txt *.ipynb
+ 1774  mkdir ../ub_bm3d_6to10_fine; mv *.txt *.ipynb ../ub_bm3d_6to10_fine
+ 1775  ls
+ 1776  rm stack{1..20}_*.mrc
+ 1777  ks
+ 1778  ls
+ 1779  vim unblur_bm3d_half.sh 
+ 1780  ./unblur_bm3d_half.sh 
+ 1781  rm *.mrc
+ 1782  rm *.txt
+ 1783  rm *.mrc
+ 1784  rm *.txt
+ 1785  rm *.mrc
+ 1786  rm *.txt
+ 1787  rm *.mrc
+ 1788  rm *.txt
+ 1789  source activate cs590
+ 1790  ./unblur_bm3d_half.sh 
+ 1791  cd ../unblurx2/
+ 1792  ls
+ 1793  vim unblurx2_average.sh 
+ 1794  vim unblurx2_average_pipeline.sh 
+ 1795  ./unblurx2_average.sh 
+ 1796  cd ../unblur_bm3d_11to15/
+ 1797  vim unblur_bm3d_half.sh 
+ 1798  ./unblur_bm3d_half.sh 
+ 1799  cp ../apoferritin/stack{11..15}.mrc .
+ 1800  ls
+ 1801  ./unblur_bm3d_half.sh 
+ 1802  mkdir ../ub_bm3d_10to15_fine; mv *.txt *.ipynb ../ub_bm3d_10to15_fine
+ 1803  ls
+ 1804  rm stack{1..20}_*.mrc
+ 1805  ls
+ 1806  vim unblur_bm3d_half.sh 
+ 1807  ./unblur_bm3d_half.sh 
+ 1808  cd unblur_bm3d_16to20/
+ 1809  ls
+ 1810  vim unblur_bm3d_half_pipeline.sh 
+ 1811  vim unblur_bm3d_half.sh 
+ 1812  cp ../apoferritin/stack{16..20}.mrc .
+ 1813  ls
+ 1814  ./unblur_bm3d_half.sh 
+ 1815  source activate cs590
+ 1816  ./unblur_bm3d_half.sh 
+ 1817  mkdir ../ub_bm3d_16to20_fine; mv *.txt *.ipynb ../ub_bm3d_16to20_fine
+ 1818  rm stack{1..20}_*.mrc
+ 1819  ls
+ 1820  vim unblur_bm3d_half.sh 
+ 1821  ./unblur_bm3d_half.sh 
+ 1822  ls
+ 1823  vim unblur_bm3d_half.sh 
+ 1824  imod stack20_ubbm3d_averaged_1_7.0_0_0_half.mrc 
+ 1825  imod stack20_ubbm3d_averaged_1_0.0_0_0_half.mrc 
+ 1826  imod stack20_ubbm3d_1_0.0_0_0_half.mrc 
+ 1827  imod stack20_ubbm3d_1_7.0_0_0_half.mrc 
+ 1828  imod stack20_ubbm3d_1_4.0_0_0_half.mrc 
+ 1829  mkdir samples; cp stack20_ubbm3d_1_4.0_0_0_half.mrc samples
+ 1830  mkdir samples; cp stack20_ubbm3d_1_7.0_0_0_half.mrc samples
+ 1831  cp stack20_ubbm3d_1_7.0_0_0_half.mrc samples
+ 1832  cp stack20_ubbm3d_1_0.0_0_0_half.mrc samples
+ 1833  vim unblur_bm3d_half_pipeline.sh 
+ 1834  vim ub_stack_pipeline.sh
+ 1835  vim unblur_bm3d_half.sh 
+ 1836  source activate cs590
+ 1837  jupyter notebook
+ 1838  cd ..
+ 1839  ls
+ 1840  jupyter notebook
+ 1841  cd ..
+ 1842  ls
+ 1843  mkdir unblur_full_bm3d
+ 1844  cd unblur_full_bm3d/
+ 1845  ls
+ 1846  mv unblur_bm3d_half_pipeline.sh unblur_full_bm3d_pipeline.sh
+ 1847  mv unblur_bm3d_half.sh unblur_full_bm3d.sh
+ 1848  ls
+ 1849  vim unblur_full_bm3d_pipeline.sh 
+ 1850  conda activate cs590
+ 1851  vim bm3d_filtering.py 
+ 1852  vim unblur_full_bm3d.sh 
+ 1853  ./unblur_full_bm3d.sh 
+ 1854  ls
+ 1855  rm (rm *.txt
+ 1856  rm *.mrc
+ 1857  rm (rm *.txt
+ 1858  rm *.mrc
+ 1859  rm (rm *.txt
+ 1860  rm *.mrc
+ 1861  rm (rm *.txt
+ 1862  rm rm *.mrc
+ 1863  rm (rm *.txt
+ 1864  rm *.txt
+ 1865  rm *.mrc
+ 1866  ./unblur_full_bm3d.sh 
+ 1867  rm *.txt
+ 1868  rm *.mrc
+ 1869  rm *.txt
+ 1870  rm *.mrc
+ 1871  rm *.txt
+ 1872  rm *.mrc
+ 1873  vim unblur_full_bm3d.sh 
+ 1874  ./unblur_full_bm3d.sh 
+ 1875  rm *.mrc
+ 1876  rm *.txt
+ 1877  ./unblur_full_bm3d.sh 
+ 1878  vim unblur_full_bm3d.sh 
+ 1879  ./unblur_full_bm3d.sh 
+ 1880  rm *.txt
+ 1881  rm stack19_*.mrc
+ 1882  ls
+ 1883  ./unblur_full_bm3d.sh 
+ 1884  rm stack19_*.mrc
+ 1885  rm *.txt
+ 1886  vim unblur_full_bm3d.sh 
+ 1887  ./unblur_full_bm3d.sh 
+ 1888  ls
+ 1889  vim unblur_full_bm3d_pipeline.sh 
+ 1890  vim unblur_full_bm3d.sh 
+ 1891  git status
+ 1892  cd ..
+ 1893  git add /*/*.txt
+ 1894  git add [path]/\*.txt
+ 1895  git add *.txt
+ 1896  git add *.ipyng
+ 1897  git add *.ipynb
+ 1898  ls
+ 1899  git status
+ 1900  git commit -m "half and full unblur_bm3d updates:
+ 1901  c
+ 1902  "
+ 1903  git commit -m "half and full unblur_bm3d updates"
+ 1904  git push
+ 1905  ls
+ 1906  cd unblur_bm3d_1to5/
+ 1907  ls
+ 1908  cp unblur_bm3d_analyze_stacks1to5.ipynb ..
+ 1909  vim unblur_full_bm3d.sh 
+ 1910  vim unblur_full_bm3d_pipeline.sh 
+ 1911  top
+ 1912  ls
+ 1913  vim unblur_full_bm3d.sh 
+ 1914  ./unblur_full_bm3d.sh 
+ 1915  source activate cs590]
+ 1916  source activate cs590
+ 1917  ./unblur_full_bm3d.sh 
+ 1918  ls
+ 1919  imod stack19_ubbm3d_1_4.0_1.00_2000_half.mrc 
+ 1920  imod stack19_ubbm3d_1_4.0_0.00001_2000_half.mrc 
+ 1921  LS
+ 1922  ls
+ 1923  rm *0.00001*.mrc
+ 1924  rm *0.00001*.txt
+ 1925  ls
+ 1926  vim unblur_full_bm3d_pipeline.sh 
+ 1927  vim bm3d_filtering.py 
+ 1928  vim unblur_full_bm3d.sh 
+ 1929  ./unblur_full_bm3d.sh 
+ 1930  vim unblur_full_bm3d.sh 
+ 1931  ./unblur_full_bm3d.sh 
+ 1932  vim unblur_full_bm3d.sh 
+ 1933  cp ../apoferritin/stack{1&5&7}.mrc .
+ 1934  cp ../apoferritin/stack{1|5|7}.mrc .
+ 1935  cp ../apoferritin/stack1.mrc .
+ 1936  cp ../apoferritin/stack5.mrc .
+ 1937  cp ../apoferritin/stack7.mrc .
+ 1938  vim unblur_full_bm3d.sh 
+ 1939  cp ../apoferritin/stack{1..8}.mrc .
+ 1940  ls
+ 1941  vim unblur_full_bm3d.sh 
+ 1942  ./unblur_full_bm3d.sh 
+ 1943  rm *.txt
+ 1944  rm *.mrc
+ 1945  rm *.txt
+ 1946  rm *.mrc
+ 1947  rm *.txt
+ 1948  rm *.mrc
+ 1949  rm *.txt
+ 1950  rm *.mrc
+ 1951  rm *.txt
+ 1952  rm *.mrc
+ 1953  ls
+ 1954  vim unblur_full_bm3d.sh \
+ 1955  ./unblur_full_bm3d.sh
+ 1956  vim unblur_full_bm3d.sh
+ 1957  ./unblur_full_bm3d.sh
+ 1958  vim unblur_full_bm3d.sh
+ 1959  ./unblur_full_bm3d.sh
+ 1960  vim unblur_full_bm3d.sh
+ 1961  ./unblur_full_bm3d.sh
+ 1962  vim unblur_full_bm3d.sh
+ 1963  ./unblur_full_bm3d.sh
+ 1964  vim unblur_full_bm3d.sh
+ 1965  ./unblur_full_bm3d.sh
+ 1966  vim unblur_full_bm3d.sh
+ 1967  ./unblur_full_bm3d.sh
+ 1968  vim unblur_full_bm3d.sh
+ 1969  ./unblur_full_bm3d.sh
+ 1970  vim unblur_full_bm3d.sh
+ 1971  ls
+ 1972  vim unblur_full_bm3d.sh 
+ 1973  cd ../unblur_full_bm3d_16to20/
+ 1974  ls
+ 1975  vim unblur_full_bm3d.sh 
+ 1976  cp ../apoferritin/stack{16..20}.mrc .
+ 1977  ls
+ 1978  vim unblur_full_bm3d.sh 
+ 1979  im unblur_full_bm3d.sh 
+ 1980  ./unblur_full_bm3d.sh 
+ 1981  vim unblur_full_bm3d.sh 
+ 1982  ./unblur_full_bm3d.sh 
+ 1983  ls
+ 1984  docker-compose
+ 1985  docker
+ 1986  docker status
+ 1987  docker
+ 1988  docker info
+ 1989  docker container ls -a
+ 1990  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1991  ls
+ 1992  docker build .
+ 1993  docker status
+ 1994  docker container ls -a
+ 1995  docker info
+ 1996  docker-compose run web python /cs316code/manage.py migrate --noinput
+ 1997  docker-compose run web python /cs316code/backend/manage.py migrate --noinput
+ 1998  docker-compose run web python /cs316code/manage.py createsuperuser
+ 1999  docker-compose run web python /cs316code/backend/manage.py createsuperuser
+ 2000  docker-compose up -d --build
+ 2001  docker container ls -a
+ 2002  docker container
+ 2003  docker container ls
+ 2004  docker exec -it postgres psql -U postgres
+ 2005  docker exec -it postgres:10.1-alpine psql -U postgres
+ 2006  docker exec -it cs316source_db_1 psql -U postgres
+ 2007* docker exec -it cs316source_db_1 psql -
+ 2008  docker exec -it cs316source_db_1 psql -U postgres
+ 2009  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2010  ls
+ 2011  cd backend/
+ 2012  ls
+ 2013  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2014  history
+ 2015  docker-compose run rebuild
+ 2016  docker-compose build
+ 2017  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2018  docker container inspect cs316source_db_1 
+ 2019  docker run -it cs316source_db_1
+ 2020  docker run -it cs316source_web
+ 2021  docker run -it cs316source_web sh
+ 2022  docker run -it cs316source_db sh
+ 2023  docker run -it cs316source_db_1 sh
+ 2024  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2025  docker exec -it cs316source_db_1 psql -U postgres -af insert_sites.sq;
+ 2026  docker exec -it cs316source_db_1 psql -U postgres -af insert_sites.sql
+ 2027  pwd
+ 2028  docker exec -it cs316source_db_1 psql -U postgres -af /home/xiaochen/Documents/cs316source/backend/insert_sites.sql
+ 2029  sudo docker-compose up --force-recreate service
+ 2030  docker-compose up --force-recreate service
+ 2031  docker container ls
+ 2032  ls
+ 2033  docker cp *.sql cs316source_db_1:/
+ 2034  docker cp insert_sites.sql cs316source_db_1:/
+ 2035  docker exec -it cs316source_db_1 psql -U postgres -af /home/xiaochen/Documents/cs316source/backend/insert_sites.sql
+ 2036  docker cp insert_sites.sql postgres_data:/
+ 2037  docker exec -it cs316source_db_1 psql -U postgres -af insert_sites.sql
+ 2038  ls
+ 2039  docker cp insert_sites.sql cs316source_db_1:/
+ 2040  docker exec -it cs316source_db_1 psql -U postgres -af insert_sites.sql
+ 2041  docker cp *.sql cs316source_db_1:/
+ 2042  docker cp insert_employers.sql cs316source_db_1:/
+ 2043  docker cp insert_wages.sql cs316source_db_1:/
+ 2044  docker cp insert_housing.sql cs316source_db_1:/
+ 2045  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2046  docker cp insert_housing.sql cs316source_db_1:/
+ 2047  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2048  docker cp insert_housing.sql cs316source_db_1:/
+ 2049  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2050  docker cp insert_employers.sql cs316source_db_1:/
+ 2051  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2052  docker cp insert_employers.sql cs316source_db_1:/
+ 2053  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2054  docker cp insert_employers.sql cs316source_db_1:/
+ 2055  docker exec -it cs316source_db_1 psql -U postgres -af insert_employers.sql
+ 2056  docker cp insert_employers.sql cs316source_db_1:/
+ 2057  docker cp insert_housing.sql cs316source_db_1:/
+ 2058  docker exec -it cs316source_db_1 psql -U postgres -af insert_housing.sql
+ 2059  docker cp insert_wages.sql cs316source_db_1:/
+ 2060  docker exec -it cs316source_db_1 psql -U postgres -af insert_wages.sql
+ 2061  history -100
+ 2062  history -d 100
+ 2063  history
+ 2064  echo history > dockerconfig.txt
+ 2065  vim dockerconfig.txt 
+ 2066  history | dockerconfig.txt
+ 2067  history > dockerconfig.txt
