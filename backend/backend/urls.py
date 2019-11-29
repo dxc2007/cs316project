@@ -32,11 +32,16 @@ router.register(r'housingbuffers', blueberry_views.HousingBufferView, 'housingbu
 router.register(r'housingprices', blueberry_views.HousingPriceList, 'housingprice')
 router.register(r'wages', blueberry_views.WagesList, 'wage')
 router.register(r'userwagepostings', blueberry_views.UserWagesPostingList, 'userwageposting')
+router.register(r'userwagepending', blueberry_views.UserWagesPendingList, 'userwagepending')
+router.register(r'wagesummary', blueberry_views.WageSummaryList, 'wagesummary')
+router.register(r'housingsummary', blueberry_views.HousingSummaryList, 'housingsummary')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-token-auth/', obtain_auth_token, name="api-token-auth"),
     path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration', include('rest_auth.registration.urls')),
     path('rest-auth/create-user/', blueberry_views.UserCreate.as_view(),name='create_user'),
     # path('rest-auth/facebook/', blueberry_views.FacebookLogin.as_view(), name='fb_login')
     # path('rest-auth/github/', GitHubLogin.as_view(), name='github_login')

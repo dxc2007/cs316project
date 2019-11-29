@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+from rest_framework.authtoken.models import Token
 from .models import Site, Employer, WagePosting, WageBuffer, HousingPosting, HousingBuffer
 
 from django.contrib.auth.models import User
+
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -23,7 +25,13 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password')
-        
+
+class TokenSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=False, read_only=True)
+    class Meta:
+        model = Token
+        fields = ('key', 'user')
+     
 class SiteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Site
@@ -55,16 +63,32 @@ class HousingBufferSerializer(serializers.ModelSerializer):
         fields = ('postingid', 'siteid', 'price', 'year')
 
 class HousingPostingListSerializer(serializers.ModelSerializer):
-	# housingposting = serializers.PrimaryKeyRelatedField(many=True, queryset=HousingPosting.objects.all())
-	housingposting = HousingPostingSerializer(many=True, read_only=True)
-	
-	class Meta:
-		model = Site
-		fields = ['siteid', 'city', 'state', 'housingposting']
+    # housingposting = serializers.PrimaryKeyRelatedField(many=True, queryset=HousingPosting.objects.all())
+    city = serializers.ReadOnlyField(source='siteid.city')
+    zip_code = serializers.ReadOnlyField(source='siteid.zip_code')
+    state = serializers.ReadOnlyField(source='siteid.state')
+
+    class Meta:
+        model = HousingPosting
+        fields = ('postingid', 'city', 'zip_code', 'state', 'price', 'year')
 
 class WagePostingListSerializer(serializers.ModelSerializer):
-    wageposting = WagePostingSerializer(many=True, read_only=True)
-    
+    # wageposting = WagePostingSerializer(many=True, read_only=True)
+    city = serializers.ReadOnlyField(source='siteid.city')
+    zip_code = serializers.ReadOnlyField(source='siteid.zip_code')
+    state = serializers.ReadOnlyField(source='siteid.state')
+    employer = serializers.ReadOnlyField(source='employerid.employer_name')
+
     class Meta:
-        model = Site
-        fields = ['siteid', 'city', 'state', 'wageposting']
+        model = WagePosting
+        fields = ('postingid', 'city', 'zip_code', 'state', 'employer', 'uid', 'position', 'wage', 'year')
+
+class WageSummarySerializer(serializers.Serializer):
+    minimum = serializers.IntegerField()
+    maximum = serializers.IntegerField()
+    average = serializers.IntegerField()
+
+class HousingSummarySerializer(serializers.Serializer):
+    minimum = serializers.IntegerField()
+    maximum = serializers.IntegerField()
+    average = serializers.IntegerField()

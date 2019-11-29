@@ -79,6 +79,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'blueberry.serializers.TokenSerializer'
+}
+
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
