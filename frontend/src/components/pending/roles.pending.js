@@ -249,7 +249,7 @@ const useStyles = makeStyles(theme => ({
 
 
     useEffect(() => {
-      const url = "http://localhost:8000/api/wagebuffers/";
+      const url = "http://67.159.88.90:8000/api/wagebuffers/";
       axios.get(url).then(async function(res){
         console.log("blah");
         if(res.data){

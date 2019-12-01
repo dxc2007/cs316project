@@ -7,17 +7,18 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 const postRegister = async (post) => {
   post.event.preventDefault();
-  const url = "http://127.0.0.1:8000/rest-auth/create-user/";
-  console.log(post.name)
+  const url = "http://67.159.88.90:8000/rest-auth/create-user/";
   axios.post(url, {
     username: post.name,
     email: post.email,
     password: post.password
   }).then(res => {
     console.log(res.data);
+    post.history.push("/profile");
   }).catch(err => {
     console.log(err);
   });
@@ -37,6 +38,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Register() {
+  let history = useHistory();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -101,7 +104,7 @@ export default function Register() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={event => postRegister({event: event, name: name, email:email, password: password, password2: password2})}
+              onClick={event => postRegister({event: event, name: name, email:email, password: password, password2: password2, history: history})}
             >
               Register
             </Button>

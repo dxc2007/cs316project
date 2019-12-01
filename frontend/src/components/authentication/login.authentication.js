@@ -11,14 +11,16 @@ import { useHistory } from "react-router-dom";
 
 const postLogin = async (post) => {
   post.event.preventDefault();
-  const url = "http://127.0.0.1:8000/rest-auth/login/";
+  const url = "http://67.159.88.90:8000/rest-auth/login/";
   axios.post(url, {
-    username: post.email,
+    username: post.username,
     password: post.password
   }).then(res => {
     if(res.data.key){
       localStorage.setItem("key", res.data.key);
-      console.log(res.data.key);
+      localStorage.setItem("username", res.data.user.username);
+      localStorage.setItem("email", res.data.user.email);
+      console.log(res.data);
       post.history.push("/profile");
     }
   }).catch(err => {
@@ -42,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 export default function Login() {
   let history = useHistory();
 
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const classes = useStyles();
@@ -53,14 +55,14 @@ export default function Login() {
           </Typography>
           <form className={classes.form} noValidate>
             <TextField 
-              name = "email"
+              name = "username"
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              label="Email"
-              value = {email}
-              onChange = {event => setEmail(event.target.value)}
+              label="Username"
+              value = {username}
+              onChange = {event => setUsername(event.target.value)}
             />
             <TextField 
               name = "password"
@@ -82,7 +84,7 @@ export default function Login() {
               fullWidth
               variant="contained"
               color="primary"
-              onClick={event => postLogin({event: event, email: email, password: password, history: history})}
+              onClick={event => postLogin({event: event, username: username, password: password, history: history})}
               className={classes.submit}
             >
               Sign In
