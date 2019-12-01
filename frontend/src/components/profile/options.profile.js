@@ -68,7 +68,11 @@ export default function Options() {
                         </CardContent>
                         <Divider />
                         <CardActions>
-                            <Button size="small">Contribute Work Experience</Button>
+                            <Button size="small">
+                                <Link className={classes.link} to="/contribute/work">
+                                    Contribute Work Experience
+                                </Link>
+                            </Button>
                         </CardActions>
                     </Card>
                 </Grid>
@@ -90,7 +94,11 @@ export default function Options() {
                         </CardContent>
                         <Divider />
                         <CardActions>
-                            <Button size="small">Contribute Housing Experience</Button>
+                            <Button size="small">
+                                <Link className={classes.link} to="/contribute/housing">
+                                    Contribute Housing Experience
+                                </Link>
+                            </Button>
                         </CardActions>
                     </Card>
                 </Grid>

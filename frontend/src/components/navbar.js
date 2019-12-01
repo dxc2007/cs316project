@@ -38,12 +38,12 @@ const NavBar = () => {
     const classes = useStyles();
     const location = useLocation();
     const renderUserOrLogin = () => {
-        if (user) {
+        if (localStorage.getItem("key")) {
             return (
             <React.Fragment>
                 <Button>
-                    <Link className={classes.link} to="/account">
-                        {user}
+                    <Link className={classes.link} to="/profile">
+                        {localStorage.getItem("username")}
                     </Link>
                 </Button>
                 <Button>

@@ -34,7 +34,7 @@ export default function Profile() {
                 (<div>Login in Required</div>) : 
                 (<Container className={classes.root}>
                     <AccountCircleIcon className={classes.icon} style={{ fontSize: 150 }} />
-                    <Typography className={classes.title}>Welcome, User</Typography>
+                    <Typography className={classes.title}>Welcome, {localStorage.getItem("username")}</Typography>
                     <Options/>
                 </Container>)
             }
