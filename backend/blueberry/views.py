@@ -11,6 +11,7 @@ from rest_framework import views, viewsets          # add this
 from rest_framework import generics
 from rest_framework import filters
 from rest_framework import status
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 
@@ -54,35 +55,42 @@ class UserCreate(views.APIView):
 # Create your views here.
 class SiteView(viewsets.ModelViewSet):
 	serializer_class = SiteSerializer
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 	queryset = Site.objects.all()
 
 class EmployerView(viewsets.ModelViewSet):
 	serializer_class = EmployerSerializer    
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 	queryset = Employer.objects.all()
 
 class WagePostingView(viewsets.ModelViewSet):
 	permission_classes = (IsAuthenticatedAndOwnerToUpdate,)
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 	serializer_class = WagePostingSerializer    
 	queryset = WagePosting.objects.all()
 
 class WageBufferView(viewsets.ModelViewSet):
 	permission_classes = (IsAdminUser,)
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 	serializer_class = WageBufferSerializer
 	queryset = WageBuffer.objects.all()
 
 class HousingPostingView(viewsets.ModelViewSet):
 	permission_classes = (IsAdminToUpdate,)
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 	serializer_class = HousingPostingSerializer    
 	queryset = HousingPosting.objects.all()
 
 class HousingBufferView(viewsets.ModelViewSet):
 	permission_classes = (IsAdminUser,)
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 	serializer_class = HousingBufferSerializer    
 	queryset = HousingBuffer.objects.all()
 
 class HousingPriceList(viewsets.ModelViewSet):
 	permission_classes = [IsAdminToUpdate,]
 	serializer_class = HousingPostingListSerializer
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 
 	def get_queryset(self):
 		queryset = HousingPosting.objects.all()
@@ -105,6 +113,7 @@ class HousingPriceList(viewsets.ModelViewSet):
 class WagesList(viewsets.ModelViewSet):
 	permission_classes = (IsAuthenticatedAndOwnerToUpdate,)
 	serializer_class = WagePostingListSerializer
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 
 	def get_queryset(self):
 		queryset = WagePosting.objects.all()
@@ -130,6 +139,8 @@ class WagesList(viewsets.ModelViewSet):
 class UserWagesPostingList(viewsets.ModelViewSet):
 	permission_classes = (IsAuthenticated,)
 	serializer_class = WagePostingSerializer
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
+
 
 	def get_queryset(self):
 		user = self.request.user
@@ -139,6 +150,7 @@ class UserWagesPostingList(viewsets.ModelViewSet):
 class UserWagesPendingList(viewsets.ModelViewSet):
 	permission_classes = (IsAuthenticated,)
 	serializer_class = WageBufferSerializer
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 
 	def get_queryset(self):
 		user = self.request.user
@@ -147,6 +159,7 @@ class UserWagesPendingList(viewsets.ModelViewSet):
 
 class WageSummaryList(viewsets.ViewSet):
 	pagination_class = None
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 
 	def list(self, response):
 		queryset = WagePosting.objects.all()
@@ -164,6 +177,7 @@ class WageSummaryList(viewsets.ViewSet):
 
 class HousingSummaryList(viewsets.ViewSet):
 	pagination_class = None
+	authentication_classes = (TokenAuthentication,SessionAuthentication,BasicAuthentication)
 
 	def list(self, response):
 		queryset = HousingPosting.objects.all()
