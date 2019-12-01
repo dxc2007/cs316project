@@ -250,8 +250,7 @@ const useStyles = makeStyles(theme => ({
 
     useEffect(() => {
       const url = "http://67.159.88.90:8000/api/wagebuffers/";
-      axios.get(url).then(async function(res){
-        console.log("blah");
+      axios.get(url, {headers: {"authentication": localStorage.getItem("key")}}).then(async function(res){
         if(res.data){
           setRows(await Promise.all(res.data.map(data => {
             console.log(data)
