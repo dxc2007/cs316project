@@ -18,7 +18,8 @@ const postRegister = async (post) => {
     password: post.password
   }).then(res => {
     console.log(res.data);
-    post.history.push("/profile");
+    // post.history.push("/login");
+    post.toggle(post.event, 'login')
   }).catch(err => {
     console.log(err);
   });
@@ -37,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Register() {
+export default function Register(props) {
   let history = useHistory();
 
   const [name, setName] = useState('');
@@ -104,7 +105,7 @@ export default function Register() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={event => postRegister({event: event, name: name, email:email, password: password, password2: password2, history: history})}
+              onClick={event => postRegister({event: event, name: name, email:email, password: password, password2: password2, history: history, toggle: props.toggle})}
             >
               Register
             </Button>

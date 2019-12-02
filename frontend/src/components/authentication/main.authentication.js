@@ -84,7 +84,7 @@ export default function Authentication() {
             <Login/>
           </div>
           <div className={toggle2}>
-            <Register/>
+            <Register toggle={handleChange}/>
           </div>
           <Container className={classes.container}>
             <ToggleButtonGroup className={classes.toggle} size="medium" value={alignment} exclusive onChange={handleChange}>
