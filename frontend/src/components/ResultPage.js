@@ -70,21 +70,21 @@ export default function ResultPage() {
 
     const renderHousingValue = () => {
         if (toggle.housing == 0) {
-            return housingResult.min;
+            return housingResult.minimum;
         } else if (toggle.housing == 1) {
-            return housingResult.ave;
+            return housingResult.average;
         } else {
-            return housingResult.max;
+            return housingResult.maximum;
         }
     }
 
     const renderWageValue = () => {
         if (toggle.wage == 0) {
-            return wageResult.min;
+            return wageResult.minimum;
         } else if (toggle.wage == 1) {
-            return wageResult.ave;
+            return wageResult.average;
         } else {
-            return wageResult.max;
+            return wageResult.maximum;
         }
     }
 

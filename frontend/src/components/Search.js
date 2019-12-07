@@ -31,64 +31,52 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const parseWagePosting = async (posting) => {
-    return await Promise.all(posting.wageposting.map(async entry => {
-        let employerData = await axios.get("http://localhost:8000/api/employers/"+ entry.employerid);
-        return {
-            company: employerData.data.employer_name, 
-            location: posting.city, 
-            position: entry.position, 
-            year: entry.year, 
-            wage: entry.wage,
-        }
-    }));
+const parseWagePosting = (posting) => {
+    return {
+        company: posting.employer, 
+        location: posting.city, 
+        position: posting.position,
+        year: posting.year, 
+        wage: posting.wage,
+        id: posting.id, 
+    }
 }
 
 const fetchSearchResult = async (job, location) => {
-     const url = "http://localhost:8000/api/wages/?city=" + location + "&position=" + job;
+     const url = "http://67.159.88.90:8000/api/wages/?city=" + location + "&position=" + job;
      let wageInfo = await axios.get(url);
 
-     if (!wageInfo || !wageInfo.data || wageInfo.data.length === 0) {
+     if (!wageInfo || !wageInfo.data || !wageInfo.data.results || wageInfo.data.results.length === 0) {
          return null;
      }
-
-     return await 
-         wageInfo.data.map(item => 
-            parseWagePosting(item))
-        .reduce((acc, val) => acc.concat((val), []));
+     
+     return {
+        ...wageInfo.data,
+        results: wageInfo.data.results.map(item => 
+            parseWagePosting(item)),
+     };
 }
 
 const fetchHousingResult = async (location) => {
-    const url = "http://localhost:8000/api/housingprices/?city=" + location;
+    const url = "http://67.159.88.90:8000/api/housingsummary/?city=" + location;
     let housingInfo = await axios.get(url);
 
-    if (!housingInfo || !housingInfo.data || housingInfo.data.length === 0) {
+    if (!housingInfo || !housingInfo.data) {
         return null;
-    }
+    } 
 
-    if (housingInfo.data[0].housingposting.length > 0) {
-        const housingData = housingInfo.data[0].housingposting.map(posting => posting.price);
-        return {
-            ave: parseInt(housingData.reduce((a,b) => a + b, 0) / housingData.length), 
-            min: Math.min(...housingData), 
-            max: Math.max(...housingData)
-        }
-    } else {
-        return null;
-    }
+    return housingInfo.data;
 }
 
-const calculateWageResult = (result) => {
-    if (result && result.length > 0) {
-        const wages = result.map(post => post.wage);
-        return {
-            ave: parseInt(wages.reduce((a,b) => a + b, 0) / wages.length), 
-            min: Math.min(...wages), 
-            max: Math.max(...wages)
-        }
-    } else {
+const fetchWageResult = async (job, location) => {
+    const url = "http://67.159.88.90:8000/api/wagesummary/?city=" + location + "&position=" + job;
+    let wageInfo = await axios.get(url);
+
+    if (!wageInfo || !wageInfo.data) {
         return null;
-    }
+    } 
+
+    return wageInfo.data;
 }
 
 
@@ -144,7 +132,7 @@ const Search = () => {
                             type: 'updateSearchResult',
                             searchResult: result,
                         });
-                        const wageResult = calculateWageResult(result);
+                        const wageResult = await fetchWageResult(values.job, values.location);
                         dispatch({
                             type: 'updateWageResult',
                             wageResult: wageResult,

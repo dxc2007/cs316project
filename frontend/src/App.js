@@ -13,7 +13,6 @@ import Account from './components/Account'
 import Contribute from './components/Contribute'
 import Profile from './components/profile/main.profile';
 import Pending from './components/pending/main.pending';
-import axios from 'axios'
 
 
 function App() {
@@ -21,7 +20,10 @@ function App() {
   const initialState = {
     user: null, 
     searchQuery: null, 
-    searchResult: null,
+    searchResult: {
+      count: 0, 
+      results: null,
+    },
     housingResult: null, 
     wageResult: null, 
   };

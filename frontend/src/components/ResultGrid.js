@@ -5,8 +5,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TablePagination from '@material-ui/core/TablePagination';
 import Paper from '@material-ui/core/Paper';
 import { useStateValue } from '../state';
+import axios from 'axios';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,12 +31,17 @@ const useStyles = makeStyles(theme => ({
 export default function DenseTable() {
   const classes = useStyles();
   const [{ searchResult }, dispatch] = useStateValue();
+  const [toggle, setToggle] = React.useState({
+    wage: 1,
+    housing: 1,
+  });
+
+  const [page, setPage] = React.useState(0);
 
   const renderListingGrid = (searchResult) => {
-    console.log(searchResult);
-    if (searchResult) {
-        return searchResult.map(listing => (
-              <TableRow key={listing.company + listing.wage}>
+    if (searchResult.results) {
+        return searchResult.results.map(listing => (
+              <TableRow key={listing.id}>
                 <TableCell align="right">{listing.company}</TableCell>
                 <TableCell align="right">{listing.location}</TableCell>
                 <TableCell align="right">{listing.position}</TableCell>
@@ -45,6 +52,41 @@ export default function DenseTable() {
     } else {
         return 'No Search Results';
     }
+}
+
+const updateSearchResult = async (url) => {
+  let wageInfo = await axios.get(url);
+  if (!wageInfo || !wageInfo.data || !wageInfo.data.results || wageInfo.data.results.length === 0) {
+    return null;
+  }
+
+  const newSearchResult =  {
+    ...wageInfo.data,
+    results: wageInfo.data.results.map(posting => 
+        ({
+        company: posting.employer, 
+        location: posting.city, 
+        position: posting.position,
+        year: posting.year, 
+        wage: posting.wage,
+        id: posting.id, 
+    })),
+  };
+
+  dispatch({
+    type: 'updateSearchResult',
+    searchResult: newSearchResult,
+  });
+}
+
+
+const handlePageChange = (event, newPage) => {
+  if (parseInt(newPage) > parseInt(page)) {
+    updateSearchResult(searchResult.next);
+  } else {
+    updateSearchResult(searchResult.previous);
+  }
+  setPage(newPage);
 }
 
   return (
@@ -63,6 +105,13 @@ export default function DenseTable() {
           <TableBody>
             {renderListingGrid(searchResult)}
           </TableBody>
+          <TablePagination
+            count={searchResult.count}
+            rowsPerPage={10}
+            rowsPerPageOptions={[]}
+            page={page}
+            onChangePage={handlePageChange}
+        />
         </Table>
       </Paper>
     </div>
