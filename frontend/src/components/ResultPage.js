@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../state';
 import { Typography } from '@material-ui/core';
@@ -28,6 +28,9 @@ const useStyles = makeStyles(theme => ({
   },
   slider: {
       width: "80%",
+  },
+  map: {
+      width: "80%",
   }
 
 }));
@@ -55,11 +58,10 @@ const marks = [
     return marks.findIndex(mark => mark.value === value) + 1;
   }
 
-
 export default function ResultPage() {
     const classes = useStyles();
     const [{ searchResult, searchQuery, housingResult, wageResult }, dispatch] = useStateValue();
-    console.log(wageResult);
+
     const [toggle, setToggle] = React.useState({
         wage: 1,
         housing: 1,
@@ -67,6 +69,9 @@ export default function ResultPage() {
     const handleChange = name => (event, newVal) => {
         setToggle({ ...toggle, [name]: newVal });
     };
+
+    const html = '<iframe width="600" className=classes.map height="700" frameborder="0" scrolling="no" src="//plot.ly/~yuqi98/70.embed"></iframe>';
+    const [map, setMap] = React.useState({__html: html});
 
     const renderHousingValue = () => {
         if (toggle.housing == 0) {
@@ -86,6 +91,11 @@ export default function ResultPage() {
         } else {
             return wageResult.maximum;
         }
+    }
+
+    const createMarkup = () => {
+        console.log(map);
+        return map;
     }
 
     return (
@@ -159,8 +169,8 @@ export default function ResultPage() {
                 <Paper className={classes.paper}>
 
                 <Typography variant='h6' color='inherit'>
-                    <div w3-include-html="../public/map_salary.html"></div>
                 </Typography>
+                <div dangerouslySetInnerHTML={createMarkup()}/>
                 </Paper>
                 </Grid>
             </Grid>
