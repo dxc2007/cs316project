@@ -20,6 +20,7 @@ const postLogin = async (post) => {
       localStorage.setItem("key", res.data.key);
       localStorage.setItem("username", res.data.user.username);
       localStorage.setItem("email", res.data.user.email);
+      localStorage.setItem("uid", res.data.user.id);
       console.log(res.data);
       post.history.push("/profile");
     }

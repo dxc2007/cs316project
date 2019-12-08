@@ -159,7 +159,7 @@ export default function ResultPage() {
                 <Paper className={classes.paper}>
 
                 <Typography variant='h6' color='inherit'>
-                    Map  
+                    <div w3-include-html="../public/map_salary.html"></div>
                 </Typography>
                 </Paper>
                 </Grid>

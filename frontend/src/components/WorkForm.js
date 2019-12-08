@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function WorkForm() {
   const classes = useStyles();
-  const [{ user , companies, next, previous, locations }, dispatch] = useStateValue();
+  const [{ user , companies, locations }, dispatch] = useStateValue();
   const [values, setValues] = React.useState({
     company: '',
     addCompany: false, 
@@ -123,16 +123,22 @@ export default function WorkForm() {
   }
 
   const postWorkForm = () => async () => {
-    const url = "http://67.159.88.90:8000/api/wagebuffers/";
+    const url = "http://67.159.88.90:8000/api/userwagepending/";
     const data = {
       "siteid": values.location.siteid,
       "employerid": values.company.employerid,
-      "uid": localStorage.getItem("username"),
+      "uid": localStorage.getItem('uid'),
       "position": values.position,
       "wage": values.salary,
       "year": values.year,
     };
-    const res = await axios.post(url, {headers: {"Authorization": "Token " + localStorage.getItem("key")}, data});
+    console.log(data);
+    const res = await axios.post(url, data, {
+        headers: {
+          "Authorization": "Token " + localStorage.getItem("key"),
+          "Content-Type": "application/json",
+        }
+      }).catch(err => console.log(err));
     
     console.log(res);
 
@@ -200,7 +206,7 @@ export default function WorkForm() {
         className={classes.autoComplete}
         id="company-select"
         options={companies}
-        getOptionLabel={company => company.employer_name}
+        getOptionLabel={company => company ? company.employer_name : ""} 
         style={{ width: 300 }}
         disableOpenOnFocus={true}
         renderInput={params => {
