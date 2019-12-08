@@ -2,12 +2,9 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Typography, Container, InputLabel } from '@material-ui/core';
 import { useStateValue } from '../state';
-import Select from '@material-ui/core/Select';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -35,10 +32,18 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
-  formControl: {
+  addButton: {
+    margin: theme.spacing(1),
+    flex: "0 0 20%",
+  },
+  text: {
+    flex: "0 0 100%",
+    textAlign: "center",
+  },
+  autoComplete: {
     minWidth: 240, 
     margin: theme.spacing(1),
-    flex: "0 0 100%",
+    flex: "0 0 70%",
   },
   subtext: {
     flex: "0 0 35%",
@@ -71,38 +76,40 @@ export default function HousingForm() {
     location: '',
     price: '',
     year: '',
+    addLocation: false, 
   });
-  const [didPost, setDidPost] = React.useState('');
+  const [didPost, setDidPost] = React.useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = name => (event, val) => {
+    if (name === "location") {
+      if (val) {
+        setValues({...values, [name]: val});
+      } else {
+        setValues({...values, [name]: null});
+      }
+    } else {
       setValues({ ...values, [name]: event.target.value });
-      console.log(values);
+    }
+    console.log(values);
   };
 
-  const renderAddNewLocation = () => {
-    return <MenuItem key="add-new-location" value="add-new-location">Add New Location...</MenuItem>
-  }
-
-  const renderLocationOptions = () => {
-    if (locations) {
-      return locations.map(location => {
-        return <MenuItem key={location.siteid} value={location.siteid}>{location.city}, {location.state}</MenuItem>
-      })
-    }
+  const toggleAddLocation = () => {
+    setValues({...values, addLocation: !values.addLocation});
   }
 
   const postNewLocation = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/sites/", {
+
+    const res = await axios.post("http://67.159.88.90:8000/api/sites/", {
       "zip_code": values.newZip,
       "city": values.newCity,
       "state": values.newState,
     });
-    setDidPost();
-    setValues({...values, location: res.data.siteid});
+    setDidPost(true);
+    setValues({...values, location: res.data, newCity: "", newZip: "", newState: "", addLocation: false});
   }
 
   const postHousingForm = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/housingbuffers/", {
+    const res = await axios.post("http://67.159.88.90:8000/api/housingbuffers/", {
       "siteid": values.location,
       "price": values.price,
       "year": values.year,
@@ -123,16 +130,19 @@ export default function HousingForm() {
 
   useEffect(() => {
     const fetchLocationOptions = async () => {
-      const locations = await axios.get("http://localhost:8000/api/sites/");
-      if (!locations || !locations.data || locations.data.length === 0) {
+      const init = await axios.get("http://67.159.88.90:8000/api/sites/");
+      if (!init || !init.data || init.data.length === 0) {
         return null;
       } 
+      const count = init.data.count;
+      const locations = await axios.get("http://67.159.88.90:8000/api/sites/?limit=" + count);
       dispatch({
         type: 'getLocations',
-        locations: locations.data,
+        locations: locations.data.results,
       });
     }
     fetchLocationOptions();
+    setDidPost(false);
   }, [didPost]);
 
 
@@ -143,16 +153,32 @@ export default function HousingForm() {
             <Typography className={classes.text} position="static" component="body1">
                 Where did you live?
           </Typography>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-            onChange={handleChange('location')}
-            value={values.location}
+          <Autocomplete
+            className={classes.autoComplete}
+            id="location-select"
+            options={locations}
+            getOptionLabel={location => location ? (location.city + ", " + location.state) : ""
+            }
+            style={{ width: 300 }}
+            disableOpenOnFocus={true}
+            renderInput={params => {
+              return (
+              <TextField {...params} variant="outlined" fullWidth />
+            )}}
+        onChange={handleChange('location')}
+        value={values.location}
+      />
+      <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.addButton}
+              onClick={toggleAddLocation}
             >
-          {renderAddNewLocation()}
-          {renderLocationOptions()}
-        </Select>
-      </FormControl>
-      {values.location == "add-new-location" ? 
+              Add Location
+            </Button>
+      {values.addLocation ?
       <React.Fragment>
         <TextField
           className={classes.subtext_loc}

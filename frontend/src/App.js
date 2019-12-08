@@ -83,9 +83,12 @@ function App() {
           wageResult: action.wageResult, 
         }
       case 'getCompanies':
+        console.log(action);
         return {
           ...state, 
           companies: action.companies,
+          next: action.next, 
+          previous: action.previous,
         }
       case 'getLocations':
         return {

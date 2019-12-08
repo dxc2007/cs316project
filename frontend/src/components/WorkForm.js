@@ -2,12 +2,9 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Typography, Container, InputLabel } from '@material-ui/core';
 import { useStateValue } from '../state';
-import Select from '@material-ui/core/Select';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -35,10 +32,14 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
-  formControl: {
+  addButton: {
+    margin: theme.spacing(1),
+    flex: "0 0 20%",
+  },
+  autoComplete: {
     minWidth: 240, 
     margin: theme.spacing(1),
-    flex: "0 0 100%",
+    flex: "0 0 70%",
   },
   subtext: {
     flex: "0 0 35%",
@@ -63,9 +64,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function WorkForm() {
   const classes = useStyles();
-  const [{ user , companies, locations }, dispatch] = useStateValue();
+  const [{ user , companies, next, previous, locations }, dispatch] = useStateValue();
   const [values, setValues] = React.useState({
     company: '',
+    addCompany: false, 
+    addLocation: false, 
     newCompany: '',
     newIndustry: '',
     newCity: '',
@@ -76,66 +79,61 @@ export default function WorkForm() {
     year: '',
     salary: '',
   });
-  const [didPost, setDidPost] = React.useState('');
+  const [didPost, setDidPost] = React.useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = name => (event, val) => {
+    if (name === "company" || name === "location") {
+      if (val) {
+        setValues({...values, [name]: val});
+      } else {
+        setValues({...values, [name]: null});
+      }
+    } else {
       setValues({ ...values, [name]: event.target.value });
+    }
       console.log(values);
   };
 
-  const renderAddNewCompany = () => {
-    return <MenuItem key="add-new-company" value="add-new-company">Add New Company...</MenuItem>
+  const toggleAddCompany = () => {
+    setValues({...values, addCompany: !values.addCompany});
   }
 
-  const renderAddNewLocation = () => {
-    return <MenuItem key="add-new-location" value="add-new-location">Add New Location...</MenuItem>
-  }
-
-  const renderCompanyOptions = () => {
-    if (companies) {
-      return companies.map(company => {
-        return <MenuItem key={company.employerid} value={company.employerid}>{company.employer_name}</MenuItem>
-      })
-    }
-  }
-
-  const renderLocationOptions = () => {
-    if (locations) {
-      return locations.map(location => {
-        return <MenuItem key={location.siteid} value={location.siteid}>{location.city}, {location.state}</MenuItem>
-      })
-    }
+  const toggleAddLocation = () => {
+    setValues({...values, addLocation: !values.addLocation});
   }
 
   const postNewCompany = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/employers/", {
+    const res = await axios.post("http://67.159.88.90:8000/api/employers/", {
       "employer_name": values.newCompany,
       "industry": values.newIndustry,
     })
-    setDidPost();
-    setValues({ ...values, company: res.data.employerid });
+    setDidPost(true);
+    setValues({ ...values, company: res.data, newCompany: "", newIndustry: "", addCompany: false});
   }
 
   const postNewLocation = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/sites/", {
+
+    const res = await axios.post("http://67.159.88.90:8000/api/sites/", {
       "zip_code": values.newZip,
       "city": values.newCity,
       "state": values.newState,
     });
-    setDidPost();
-    setValues({...values, location: res.data.siteid});
+    setDidPost(true);
+    setValues({...values, location: res.data, newCity: "", newZip: "", newState: "", addLocation: false});
   }
 
   const postWorkForm = () => async () => {
-    const res = await axios.post("http://localhost:8000/api/wagebuffers/", {
-      "siteid": values.location,
-      "employerid": values.company,
-      "uid": 1,
+    const url = "http://67.159.88.90:8000/api/wagebuffers/";
+    const data = {
+      "siteid": values.location.siteid,
+      "employerid": values.company.employerid,
+      "uid": localStorage.getItem("username"),
       "position": values.position,
       "wage": values.salary,
       "year": values.year,
-    });
-
+    };
+    const res = await axios.post(url, {headers: {"Authorization": "Token " + localStorage.getItem("key")}, data});
+    
     console.log(res);
 
     setValues({
@@ -155,31 +153,39 @@ export default function WorkForm() {
   useEffect(() => {
     const fetchCompanyOptions = async () => {
       console.log("fetching companies");
-      const companies = await axios.get("http://localhost:8000/api/employers/");
-      if (!companies || !companies.data || companies.data.length === 0) {
+      const init = await axios.get("http://67.159.88.90:8000/api/employers/");
+      if (!init || !init.data || init.data.length === 0) {
         return null;
       } 
+      const count = init.data.count;
+  
+      const companies = await axios.get("http://67.159.88.90:8000/api/employers/?limit=" + count);
+      
   
       dispatch({
         type: 'getCompanies',
-        companies: companies.data,
+        companies: companies.data.results,
       });
     };
     fetchCompanyOptions();
+    setDidPost(false);
   }, [didPost]);
 
   useEffect(() => {
     const fetchLocationOptions = async () => {
-      const locations = await axios.get("http://localhost:8000/api/sites/");
-      if (!locations || !locations.data || locations.data.length === 0) {
+      const init = await axios.get("http://67.159.88.90:8000/api/sites/");
+      if (!init || !init.data || init.data.length === 0) {
         return null;
       } 
+      const count = init.data.count;
+      const locations = await axios.get("http://67.159.88.90:8000/api/sites/?limit=" + count);
       dispatch({
         type: 'getLocations',
-        locations: locations.data,
+        locations: locations.data.results,
       });
     }
     fetchLocationOptions();
+    setDidPost(false);
   }, [didPost]);
 
 
@@ -190,16 +196,31 @@ export default function WorkForm() {
           <Typography className={classes.text} position="static" component="body1">
             Which company did you work at?
           </Typography>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              value={values.company}
-              onChange={handleChange('company')}
+      <Autocomplete
+        className={classes.autoComplete}
+        id="company-select"
+        options={companies}
+        getOptionLabel={company => company.employer_name}
+        style={{ width: 300 }}
+        disableOpenOnFocus={true}
+        renderInput={params => {
+          return (
+          <TextField {...params} variant="outlined" fullWidth />
+        )}}
+        onChange={handleChange('company')}
+        value={values.company}
+      />
+      <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.addButton}
+              onClick={toggleAddCompany}
             >
-          {renderAddNewCompany()}
-          {renderCompanyOptions()}
-        </Select>
-      </FormControl>
-      {values.company == "add-new-company" ? 
+              Add Company
+            </Button>
+      {values.addCompany ? 
       <React.Fragment>
         <TextField
           className={classes.subtext}
@@ -227,16 +248,32 @@ export default function WorkForm() {
             <Typography className={classes.text} position="static" component="body1">
                 Where was the office located? 
           </Typography>
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-            onChange={handleChange('location')}
-            value={values.location}
+          <Autocomplete
+            className={classes.autoComplete}
+            id="location-select"
+            options={locations}
+            getOptionLabel={location => location ? (location.city + ", " + location.state) : ""
+            }
+            style={{ width: 300 }}
+            disableOpenOnFocus={true}
+            renderInput={params => {
+              return (
+              <TextField {...params} variant="outlined" fullWidth />
+            )}}
+        onChange={handleChange('location')}
+        value={values.location}
+      />
+      <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.addButton}
+              onClick={toggleAddLocation}
             >
-          {renderAddNewLocation()}
-          {renderLocationOptions()}
-        </Select>
-      </FormControl>
-      {values.location == "add-new-location" ? 
+              Add Location
+            </Button>
+      {values.addLocation ?
       <React.Fragment>
         <TextField
           className={classes.subtext_loc}
