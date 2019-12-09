@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../state';
 import WorkForm from './WorkForm';
 import Grid from '@material-ui/core/Grid';
-import HousingForm from './HousingForm';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -32,11 +31,7 @@ export default function Contribute(props) {
   return (
       <Grid container className={classes.root}>
         <Grid item xs={12} sm={8} md={5} className={classes.item} square>
-          {
-            formType == "work" ? 
             <WorkForm></WorkForm>
-            : <HousingForm></HousingForm>
-          }
         </Grid>
       </Grid>
   );

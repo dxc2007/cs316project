@@ -76,32 +76,7 @@ export default function Options() {
                         </CardActions>
                     </Card>
                 </Grid>
-                <Grid item xs={6}>
-                <Card className={classes.card} border={0}>
-                        <CardContent>
-
-                        <Container className={classes.sides}>
-                            <div>
-                                <Typography className={classes.title} gutterBottom>
-                                    Housing Experience
-                                </Typography>
-                                <Typography variant="body2" component="p">
-                                Add your own housing experience, including where you lived, the housing price, and when the price is from.
-                                </Typography>
-                            </div>
-                            <ControlPointOutlinedIcon className={classes.circle} style={{ fontSize: 80 }} />
-                        </Container>
-                        </CardContent>
-                        <Divider />
-                        <CardActions>
-                            <Button size="small">
-                                <Link className={classes.link} to="/contribute/housing">
-                                    Contribute Housing Experience
-                                </Link>
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
+                
                 <Grid item xs={6}>
                 <Card className={classes.card} border={0}>
                         <CardContent>
